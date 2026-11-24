@@ -66,8 +66,10 @@ export function DesignSystemPage() {
             </Swatchbox>
           </div>
           <p className="mt-4 max-w-2xl text-ink-600">
-            A route line turns a corner to form an <em>R</em>, ending at a Signal-orange waypoint:
-            the delivery point. The orange dot appears in every version of the mark.
+            A shield framing a globe and an <em>R</em>, crossed by a Signal-orange arrow: goods
+            protected and on the move. Navy on light backgrounds, off-white on dark ones; the arrow
+            is orange in every version. The shield alone is used where the wordmark would be too
+            small to read.
           </p>
         </Section>
 
