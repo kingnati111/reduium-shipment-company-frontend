@@ -10,7 +10,7 @@ const API_BASE: string = import.meta.env.VITE_API_BASE_URL ?? '';
 async function call(path: string, init: RequestInit & { csrfToken?: string } = {}) {
   const { csrfToken, headers, ...rest } = init;
   return fetch(`${API_BASE}${path}`, {
-    credentials: 'same-origin',
+    credentials: API_BASE ? 'include' : 'same-origin',
     ...rest,
     headers: {
       Accept: 'application/json',
