@@ -1,0 +1,115 @@
+{
+  "documentTitle": "Reduium Shipment Company | Rastreie seu pacote",
+  "hero": {
+    "eyebrow": "Logística internacional de encomendas e cargas",
+    "title": "Cada envio, <highlight>registrado</highlight>.",
+    "intro": "A Reduium transporta encomendas e cargas entre países e registra cada entrega de mão em mão ao longo do caminho. Digite seu código de rastreamento para ver onde está seu envio e o que acontece em seguida.",
+    "numberHint": "Os códigos de rastreamento começam com <code>RDM</code> e aparecem no seu recibo e na confirmação de envio.",
+    "diagramTitle": "Como um envio se desloca",
+    "diagramBadge": "Ilustração",
+    "pausePhotos": "Pausar as fotos de fundo",
+    "playPhotos": "Reproduzir as fotos de fundo"
+  },
+  "routeDiagram": {
+    "title": "Ilustração: um envio sai da origem, passa por um centro de triagem e pela alfândega e chega ao destino.",
+    "origin": "Origem",
+    "sortingHub": "Centro de triagem",
+    "customs": "Alfândega",
+    "destination": "Destino"
+  },
+  "about": {
+    "eyebrow": "Sobre a Reduium",
+    "title": "Um parceiro logístico que mantém o registro em dia.",
+    "paragraph1": "A Reduium Shipment Company transporta encomendas e cargas para empresas e pessoas, dentro da cidade e entre países. Coleta, triagem, transferência, alfândega e entrega final são tratadas como uma única cadeia contínua.",
+    "paragraph2": "Nossa operação se baseia numa ideia simples: você deve sempre saber onde está seu envio, com quem ele está e o que acontece em seguida. Cada entrega de mão em mão é registrada, então o registro que você vê é o mesmo com que trabalhamos.",
+    "badge": "Reduium · Cargas"
+  },
+  "services": {
+    "eyebrow": "Serviços",
+    "title": "Quatro formas de enviar.",
+    "intro": "Escolha pela urgência, pelo tamanho e pelo orçamento. Todos os serviços usam a mesma rede rastreada.",
+    "bestFor": "Ideal para",
+    "includedTitle": "Incluído em todos os serviços",
+    "included": {
+      "oneNumber": "Um único código de rastreamento da coleta à entrega",
+      "scans": "Uma leitura a cada chegada e saída de uma unidade",
+      "customs": "Situação alfandegária exibida no seu histórico de rastreamento"
+    }
+  },
+  "why": {
+    "eyebrow": "Por que a Reduium",
+    "title": "Construída em torno do registro.",
+    "intro": "Os problemas de envio acontecem nos intervalos entre uma entrega e outra. Fechamos esses intervalos registrando cada uma e mostrando-a a você.",
+    "reasons": {
+      "oneNumber": {
+        "title": "Um código, do início ao fim",
+        "body": "Seu envio mantém o mesmo código de rastreamento Reduium do registro à entrega, seja qual for o serviço que o transporta."
+      },
+      "handovers": {
+        "title": "Cada entrega registrada",
+        "body": "Cada leitura, chegada e saída de uma unidade vira um registro com data, hora e local no seu histórico de rastreamento."
+      },
+      "problems": {
+        "title": "Problemas ditos com clareza",
+        "body": "Se um envio atrasa, fica retido ou uma tentativa de entrega falha, o status diz exatamente isso. Nada de um vago “em andamento”."
+      },
+      "support": {
+        "title": "Suporte que vê o mesmo que você",
+        "body": "Fale conosco com seu código de rastreamento e nossa equipe trabalhará com o mesmo registro de envio que aparece na sua tela."
+      }
+    }
+  },
+  "how": {
+    "eyebrow": "Como funciona o rastreamento",
+    "title": "Três passos para ter o quadro completo.",
+    "steps": {
+      "find": {
+        "title": "Encontre seu código",
+        "body": "Ele está no seu recibo e na confirmação de envio, neste formato: <code>RDM-XXXX-XXXX-X</code>."
+      },
+      "enter": {
+        "title": "Digite o código",
+        "body": "Digite-o no <link>campo de rastreamento</link>. Pode usar letras maiúsculas ou minúsculas e espaços."
+      },
+      "read": {
+        "title": "Acompanhe a linha do tempo",
+        "body": "Veja a situação e o local atuais, a previsão de entrega e cada evento registrado com horário e local."
+      }
+    },
+    "statusesTitle": "O que cada status significa",
+    "statusesIntro": "Cada atualização do seu histórico de rastreamento usa um destes status.",
+    "normal": "Andamento normal",
+    "attention": "Requer atenção"
+  },
+  "support": {
+    "eyebrow": "Atendimento ao cliente",
+    "title": "Dúvidas sobre um envio?",
+    "intro": "Tenha seu código de rastreamento em mãos. Assim encontramos seu envio na hora.",
+    "channels": {
+      "email": "E-mail",
+      "phone": "Telefone",
+      "hours": "Horário",
+      "headOffice": "Sede"
+    },
+    "sendMessage": "Envie uma mensagem",
+    "faqTitle": "Perguntas frequentes",
+    "faq": {
+      "findNumber": {
+        "question": "Onde encontro meu código de rastreamento?",
+        "answer": "No recibo que você recebeu quando o envio foi registrado e na sua confirmação de envio. Ele começa com RDM."
+      },
+      "notAccepted": {
+        "question": "Por que meu código de rastreamento não é aceito?",
+        "answer": "Confira cada caractere com atenção. Os códigos de rastreamento Reduium nunca contêm as letras O, I, L ou U, nem os dígitos 0 e 1. Um código com algum deles foi digitado errado."
+      },
+      "delayed": {
+        "question": "Meu envio mostra “Envio atrasado” ou “Retido”. E agora?",
+        "answer": "Abra seu histórico de rastreamento para ver a observação mais recente. Se precisar de mais detalhes, fale com o suporte informando seu código de rastreamento e analisaremos o registro do envio com você."
+      },
+      "updates": {
+        "question": "Com que frequência o rastreamento é atualizado?",
+        "answer": "Sempre que seu envio é lido ou muda de status, o registro é atualizado. A mudança aparece na próxima vez que você consultar."
+      }
+    }
+  }
+}

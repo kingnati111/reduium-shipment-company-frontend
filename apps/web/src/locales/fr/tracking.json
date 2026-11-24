@@ -1,0 +1,87 @@
+{
+  "documentTitle": "Suivre un colis | Reduium",
+  "documentTitleWithNumber": "{{trackingNumber}} | Suivi | Reduium",
+  "heading": "Suivre un colis",
+  "trackAnother": "Suivre un autre envoi",
+  "announce": {
+    "looking": "Recherche de {{trackingNumber}}",
+    "found": "Envoi {{trackingNumber}} trouvé. Statut : {{status}}.",
+    "notFound": "Aucun envoi trouvé pour {{trackingNumber}}.",
+    "rateLimited": "Trop de recherches. Veuillez patienter et réessayer.",
+    "failed": "Le suivi n’a pas pu être chargé."
+  },
+  "form": {
+    "label": "Numéro de suivi",
+    "submit": "Suivre le colis",
+    "required": "Veuillez saisir un numéro de suivi.",
+    "invalid": "Cela ne ressemble pas à un numéro de suivi Reduium. Il doit avoir la forme RDM-XXXX-XXXX-X."
+  },
+  "states": {
+    "loading": "Recherche de <code>{{trackingNumber}}</code>…",
+    "notFound": {
+      "title": "Aucun envoi trouvé",
+      "body1": "Nous n’avons trouvé aucun envoi avec le numéro de suivi <code>{{trackingNumber}}</code>.",
+      "body2": "Comparez-le avec votre reçu ou votre confirmation d’expédition. S’il correspond mais reste introuvable, contactez l’assistance et nous vérifierons.",
+      "contactSupport": "Contacter l’assistance"
+    },
+    "invalid": {
+      "title": "Ce numéro de suivi n’est pas valide",
+      "example": "Les numéros de suivi ont cette forme : <code>RDM-7K4P-9X2Q-R</code>."
+    },
+    "rateLimited": {
+      "title": "Trop de recherches",
+      "body_one": "Pour protéger les envois de nos clients, nous limitons le nombre de recherches de suivi sur une courte période. Veuillez réessayer dans environ {{count, number}} minute.",
+      "body_many": "Pour protéger les envois de nos clients, nous limitons le nombre de recherches de suivi sur une courte période. Veuillez réessayer dans environ {{count, number}} minutes.",
+      "body_other": "Pour protéger les envois de nos clients, nous limitons le nombre de recherches de suivi sur une courte période. Veuillez réessayer dans environ {{count, number}} minutes."
+    },
+    "error": {
+      "title": "Impossible de charger le suivi pour le moment",
+      "body": "Un problème est survenu de notre côté ou avec la connexion. Votre envoi n’est pas affecté. Veuillez réessayer dans un instant.",
+      "retry": "Réessayer"
+    },
+    "intro": {
+      "title": "Saisissez un numéro de suivi pour commencer",
+      "body": "Votre numéro de suivi commence par <code>RDM</code> et figure sur votre reçu et votre confirmation d’expédition."
+    }
+  },
+  "summary": {
+    "shipment": "Envoi",
+    "trackingNumberLabel": "Numéro de suivi",
+    "testData": "<strong>Données de test.</strong> Il s’agit d’un envoi d’exemple de développement, pas d’une vraie livraison.",
+    "deliveredAt": "Livré le {{date}}.",
+    "route": "Itinéraire",
+    "routeTo": "vers",
+    "currentLocation": "Emplacement actuel",
+    "delivered": "Livré",
+    "estimatedDelivery": "Livraison estimée",
+    "mayChange": "Peut changer : envoi retardé",
+    "service": "Prestation",
+    "lastUpdate": "Dernière mise à jour",
+    "notAvailable": "Pas encore disponible",
+    "advice": {
+      "DELAYED": "Votre envoi a du retard. Il est toujours en route et cette page sera mise à jour au fil de son trajet. L’estimation de livraison ci-dessous peut changer.",
+      "ON_HOLD": "Votre envoi est en pause et nécessite une intervention avant de pouvoir continuer. Veuillez <support>contacter l’assistance</support> en indiquant votre numéro de suivi.",
+      "DELIVERY_ATTEMPTED": "Nous avons tenté de livrer votre colis, sans succès. Cherchez un avis de passage ou un message du livreur, ou <support>contactez l’assistance</support> pour organiser une nouvelle livraison."
+    }
+  },
+  "history": {
+    "title": "Historique de suivi",
+    "count_one": "{{count, number}} mise à jour",
+    "count_many": "{{count, number}} mises à jour",
+    "count_other": "{{count, number}} mises à jour",
+    "empty": "Aucune mise à jour de suivi n’a encore été enregistrée pour cet envoi. Elles apparaîtront ici dès que l’envoi sera scanné.",
+    "note": "Du plus ancien au plus récent. Les heures sont affichées dans votre fuseau horaire ({{timeZone}}).",
+    "listLabel": "Historique de suivi, du plus ancien au plus récent",
+    "latest": "Dernière mise à jour",
+    "location": "Lieu :"
+  },
+  "journey": {
+    "label": "Progression du trajet",
+    "step": "Étape {{index, number}} sur {{total, number}} :",
+    "state": {
+      "complete": "terminée",
+      "current": "étape actuelle",
+      "upcoming": "à venir"
+    }
+  }
+}

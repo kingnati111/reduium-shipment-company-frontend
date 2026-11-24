@@ -1,0 +1,43 @@
+{
+  "skipToContent": "Saltar al contenido",
+  "homeLinkLabel": "Inicio de Reduium Shipment Company",
+  "nav": {
+    "mainLabel": "Principal",
+    "mobileLabel": "Móvil",
+    "track": "Rastrear",
+    "services": "Servicios",
+    "howTrackingWorks": "Cómo funciona el rastreo",
+    "about": "Nosotros",
+    "support": "Soporte"
+  },
+  "actions": {
+    "trackPackage": "Rastrear un paquete",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "goHome": "Ir al inicio"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "footer": {
+    "tagline": "Cada envío, registrado.",
+    "navigate": "Navegación",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "headOffice": "Oficina central",
+    "customerSupport": "Atención al cliente",
+    "copyright": "© {{year}} {{company}}"
+  },
+  "notFound": {
+    "documentTitle": "Página no encontrada | Reduium",
+    "eyebrow": "Error 404 · Dirección no encontrada",
+    "heading": "Esta página no está en nuestra ruta.",
+    "body": "Es posible que la dirección esté mal escrita o que la página se haya movido. Puede rastrear un paquete o volver a la página de inicio."
+  },
+  "placeholder": {
+    "label": "Provisional",
+    "hint": "Provisional: reemplazar en apps/web/src/config/company.ts"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "documentTitle": "カスタマーサポート | Reduium",
+  "page": {
+    "eyebrow": "カスタマーサポート",
+    "heading": "Reduium へのお問い合わせ",
+    "email": "メール",
+    "phone": "電話",
+    "hours": "受付時間",
+    "headOffice": "本社"
+  },
+  "form": {
+    "title": "メッセージを送る",
+    "requiredNote": "<star>*</star><sr>（必須）</sr> の付いた項目は必須です。メッセージは Reduium サポートチームに届きます。",
+    "errorSummary_other": "下記の {{count, number}} 件の項目を修正してください。",
+    "fields": {
+      "name": "お名前 *",
+      "email": "メールアドレス *",
+      "emailHint": "ご返信に使用します。",
+      "phone": "電話番号（任意）",
+      "trackingNumber": "追跡番号（任意）",
+      "trackingNumberHint": "荷物に関するお問い合わせの場合。",
+      "topic": "お問い合わせの種類 *",
+      "topicPlaceholder": "選択してください…",
+      "subject": "件名 *",
+      "message": "メッセージ *",
+      "messageCount": "{{count, number}} / {{max, number}} 文字"
+    },
+    "honeypot": "この欄は空のままにしてください",
+    "privacy": "これらの情報は、お問い合わせへの回答にのみ使用します。安全に保管され、Reduium のスタッフのみが閲覧できます。現在、確認メールはお送りしていません。送信後に表示される受付番号をお控えください。",
+    "send": "メッセージを送信",
+    "sending": "送信中…"
+  },
+  "topics": {
+    "TRACKING": "追跡に関するご質問",
+    "DELIVERY_PROBLEM": "配達に関する問題",
+    "DAMAGED_OR_MISSING": "破損・紛失した荷物",
+    "BILLING": "ご請求",
+    "OTHER": "その他"
+  },
+  "errors": {
+    "nameRequired": "お名前を入力してください。",
+    "emailRequired": "メールアドレスを入力してください。",
+    "emailInvalid": "有効なメールアドレスを入力してください。",
+    "phoneInvalid": "有効な電話番号を入力してください（例：+44 20 7946 0000）。",
+    "trackingNumberInvalid": "Reduium の追跡番号ではないようです。RDM-XXXX-XXXX-X の形式で入力してください。",
+    "topicRequired": "お問い合わせの種類を選択してください。",
+    "subjectRequired": "件名を入力してください。",
+    "messageTooShort": "10 文字以上入力してください。",
+    "fieldInvalid": "この項目をご確認ください。",
+    "checkForm": "入力内容をご確認ください。",
+    "rejected": "メッセージを送信できませんでした。もう一度お試しいただくか、メールまたはお電話でお問い合わせください。",
+    "rateLimited": "最近、多数のメッセージを受け付けています。しばらくしてから再度送信いただくか、メールまたはお電話でお問い合わせください。",
+    "unavailable": "お問い合わせフォームは一時的にご利用いただけません。メールまたはお電話でお問い合わせください。",
+    "network": "メッセージを送信できませんでした。接続をご確認のうえ再度お試しいただくか、メールまたはお電話でお問い合わせください。"
+  },
+  "receipt": {
+    "title": "メッセージを受け付けました",
+    "body": "ありがとうございます。メッセージは Reduium サポートチーム宛てに保存されました。受付番号は次のとおりです：",
+    "copy": "受付番号をコピー",
+    "copied": "コピーしました",
+    "note": "再度お問い合わせの際は、この受付番号をお伝えください。確認メールはお送りしませんので、お控えください。ご入力いただいたメールアドレスにご返信します。",
+    "another": "別のメッセージを送る"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "status": {
+    "REGISTERED": {
+      "label": "Shipment Registered",
+      "description": "Shipment details have been recorded. Awaiting the package."
+    },
+    "RECEIVED": {
+      "label": "Package Received",
+      "description": "The package has been received by Reduium."
+    },
+    "PROCESSING_AT_ORIGIN": {
+      "label": "Processing at Origin Facility",
+      "description": "The package is being sorted and prepared for dispatch."
+    },
+    "IN_TRANSIT": {
+      "label": "In Transit",
+      "description": "The package is moving through the Reduium network."
+    },
+    "ARRIVED_AT_SORTING_FACILITY": {
+      "label": "Arrived at Sorting Facility",
+      "description": "The package has arrived at a sorting facility."
+    },
+    "CUSTOMS_CLEARANCE": {
+      "label": "Customs Clearance",
+      "description": "The package is being processed by customs authorities."
+    },
+    "DEPARTED_FACILITY": {
+      "label": "Departed Facility",
+      "description": "The package has left the facility for its next stop."
+    },
+    "OUT_FOR_DELIVERY": {
+      "label": "Out for Delivery",
+      "description": "The package is with a courier and will be delivered today."
+    },
+    "DELIVERED": {
+      "label": "Successfully Delivered",
+      "description": "The package has been delivered."
+    },
+    "DELIVERY_ATTEMPTED": {
+      "label": "Delivery Attempted",
+      "description": "A delivery was attempted but could not be completed."
+    },
+    "DELAYED": {
+      "label": "Shipment Delayed",
+      "description": "The shipment is delayed. A new estimate will follow."
+    },
+    "ON_HOLD": {
+      "label": "On Hold",
+      "description": "The shipment is on hold. Contact support for details."
+    }
+  },
+  "method": {
+    "EXPRESS": {
+      "label": "Express Parcel",
+      "summary": "Priority handling for documents and small parcels, with the fewest stops between collection and delivery.",
+      "bestFor": "Documents, samples, urgent orders"
+    },
+    "AIR": {
+      "label": "Air Freight",
+      "summary": "Scheduled air cargo for time-sensitive consignments moving between countries and continents.",
+      "bestFor": "High-value or time-critical cargo"
+    },
+    "OCEAN": {
+      "label": "Ocean Freight",
+      "summary": "Full and shared container shipping for large volumes where cost matters more than speed.",
+      "bestFor": "Bulk stock, heavy and oversized goods"
+    },
+    "ROAD": {
+      "label": "Road & Ground",
+      "summary": "Domestic and cross-border trucking, plus the final leg from facility to door.",
+      "bestFor": "Regional distribution, pallets"
+    }
+  },
+  "journey": {
+    "registered": "Registered",
+    "origin": "At origin",
+    "transit": "In transit",
+    "delivery": "Out for delivery",
+    "delivered": "Delivered"
+  }
+}

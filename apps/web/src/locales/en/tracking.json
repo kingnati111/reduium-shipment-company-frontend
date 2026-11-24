@@ -1,0 +1,85 @@
+{
+  "documentTitle": "Track a package | Reduium",
+  "documentTitleWithNumber": "{{trackingNumber}} | Track | Reduium",
+  "heading": "Track a package",
+  "trackAnother": "Track another shipment",
+  "announce": {
+    "looking": "Looking up {{trackingNumber}}",
+    "found": "Shipment {{trackingNumber}} found. Status: {{status}}.",
+    "notFound": "No shipment found for {{trackingNumber}}.",
+    "rateLimited": "Too many lookups. Please wait and try again.",
+    "failed": "Tracking could not be loaded."
+  },
+  "form": {
+    "label": "Tracking number",
+    "submit": "Track package",
+    "required": "Please enter a tracking number.",
+    "invalid": "That does not look like a Reduium tracking number. It should look like RDM-XXXX-XXXX-X."
+  },
+  "states": {
+    "loading": "Looking up <code>{{trackingNumber}}</code>…",
+    "notFound": {
+      "title": "No shipment found",
+      "body1": "We couldn't find a shipment with tracking number <code>{{trackingNumber}}</code>.",
+      "body2": "Check it against your receipt or shipping confirmation. If it matches and still isn't found, contact support and we'll look into it.",
+      "contactSupport": "Contact support"
+    },
+    "invalid": {
+      "title": "That isn't a valid tracking number",
+      "example": "Tracking numbers look like this: <code>RDM-7K4P-9X2Q-R</code>."
+    },
+    "rateLimited": {
+      "title": "Too many lookups",
+      "body_one": "To protect our customers' shipments, we limit how many tracking lookups can be made in a short time. Please try again in about {{count, number}} minute.",
+      "body_other": "To protect our customers' shipments, we limit how many tracking lookups can be made in a short time. Please try again in about {{count, number}} minutes."
+    },
+    "error": {
+      "title": "We couldn't load tracking right now",
+      "body": "Something went wrong on our side or with the connection. Your shipment isn't affected. Please try again in a moment.",
+      "retry": "Try again"
+    },
+    "intro": {
+      "title": "Enter a tracking number to begin",
+      "body": "Your tracking number starts with <code>RDM</code> and is printed on your receipt and shipping confirmation."
+    }
+  },
+  "summary": {
+    "shipment": "Shipment",
+    "trackingNumberLabel": "Tracking number",
+    "testData": "<strong>Test data.</strong> This is a development sample shipment, not a real delivery.",
+    "deliveredAt": "Delivered {{date}}.",
+    "route": "Route",
+    "routeTo": "to",
+    "currentLocation": "Current location",
+    "delivered": "Delivered",
+    "estimatedDelivery": "Estimated delivery",
+    "mayChange": "May change: shipment delayed",
+    "service": "Service",
+    "lastUpdate": "Last update",
+    "notAvailable": "Not available yet",
+    "advice": {
+      "DELAYED": "Your shipment is running late. It is still on its way and this page will update as it moves. The delivery estimate below may change.",
+      "ON_HOLD": "Your shipment is paused and needs attention before it can continue. Please <support>contact support</support> and quote your tracking number.",
+      "DELIVERY_ATTEMPTED": "We tried to deliver but couldn't complete it. Check for a card or message from the courier, or <support>contact support</support> to arrange redelivery."
+    }
+  },
+  "history": {
+    "title": "Tracking history",
+    "count_one": "{{count, number}} update",
+    "count_other": "{{count, number}} updates",
+    "empty": "No tracking updates have been recorded for this shipment yet. Updates appear here as soon as the shipment is scanned.",
+    "note": "Oldest first. Times are shown in your time zone ({{timeZone}}).",
+    "listLabel": "Tracking history, oldest first",
+    "latest": "Latest update",
+    "location": "Location:"
+  },
+  "journey": {
+    "label": "Journey progress",
+    "step": "Step {{index, number}} of {{total, number}}:",
+    "state": {
+      "complete": "completed",
+      "current": "current stage",
+      "upcoming": "upcoming"
+    }
+  }
+}

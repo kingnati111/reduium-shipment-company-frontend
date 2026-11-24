@@ -1,0 +1,115 @@
+{
+  "documentTitle": "Reduium Shipment Company | Track your package",
+  "hero": {
+    "eyebrow": "International parcel & freight logistics",
+    "title": "Every shipment, <highlight>accounted</highlight> for.",
+    "intro": "Reduium moves parcels and freight across borders and records every handover along the way. Enter your tracking number to see where your shipment is and what happens next.",
+    "numberHint": "Tracking numbers start with <code>RDM</code> and appear on your receipt and shipping confirmation.",
+    "diagramTitle": "How a shipment moves",
+    "diagramBadge": "Illustration",
+    "pausePhotos": "Pause background photos",
+    "playPhotos": "Play background photos"
+  },
+  "routeDiagram": {
+    "title": "Illustration: a shipment travels from origin, through a sorting hub and customs, to its destination.",
+    "origin": "Origin",
+    "sortingHub": "Sorting hub",
+    "customs": "Customs",
+    "destination": "Destination"
+  },
+  "about": {
+    "eyebrow": "About Reduium",
+    "title": "A logistics partner that keeps the record straight.",
+    "paragraph1": "Reduium Shipment Company moves parcels and freight for businesses and individuals, across town and across borders. Collection, sorting, line haul, customs and final delivery are handled as one continuous chain.",
+    "paragraph2": "Our operation is built around a simple idea: you should always know where your shipment is, who has it, and what happens next. Every handover is logged, so the record you see is the record we work from.",
+    "badge": "Reduium · Freight"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Four ways to move it.",
+    "intro": "Choose by urgency, size and budget. Every service runs on the same tracked network.",
+    "bestFor": "Best for",
+    "includedTitle": "Included with every service",
+    "included": {
+      "oneNumber": "One tracking number from collection to delivery",
+      "scans": "A scan at every facility arrival and departure",
+      "customs": "Customs status shown in your tracking history"
+    }
+  },
+  "why": {
+    "eyebrow": "Why Reduium",
+    "title": "Built around the record.",
+    "intro": "Shipping goes wrong in the gaps between handovers. We close those gaps by recording each one and showing it to you.",
+    "reasons": {
+      "oneNumber": {
+        "title": "One number, end to end",
+        "body": "Your shipment keeps the same Reduium tracking number from registration to delivery, whichever service carries it."
+      },
+      "handovers": {
+        "title": "Every handover logged",
+        "body": "Each scan, facility arrival and departure becomes a timestamped entry in your tracking history, with its location."
+      },
+      "problems": {
+        "title": "Problems stated plainly",
+        "body": "If a shipment is delayed, held, or a delivery attempt fails, the status says exactly that. No vague “in progress”."
+      },
+      "support": {
+        "title": "Support that sees what you see",
+        "body": "Contact us with your tracking number and our team works from the same shipment record shown on your screen."
+      }
+    }
+  },
+  "how": {
+    "eyebrow": "How tracking works",
+    "title": "Three steps to the full picture.",
+    "steps": {
+      "find": {
+        "title": "Find your number",
+        "body": "It's on your receipt and shipping confirmation, and looks like <code>RDM-XXXX-XXXX-X</code>."
+      },
+      "enter": {
+        "title": "Enter it",
+        "body": "Type it into the <link>tracking field</link>. Upper or lower case and spaces are fine."
+      },
+      "read": {
+        "title": "Read the timeline",
+        "body": "See the current status and location, the estimated delivery date and every recorded event with its time and place."
+      }
+    },
+    "statusesTitle": "What each status means",
+    "statusesIntro": "Every update in your tracking history uses one of these.",
+    "normal": "Normal progress",
+    "attention": "Needs attention"
+  },
+  "support": {
+    "eyebrow": "Customer support",
+    "title": "Questions about a shipment?",
+    "intro": "Have your tracking number ready. It lets us find your shipment straight away.",
+    "channels": {
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Hours",
+      "headOffice": "Head office"
+    },
+    "sendMessage": "Send us a message",
+    "faqTitle": "Common questions",
+    "faq": {
+      "findNumber": {
+        "question": "Where do I find my tracking number?",
+        "answer": "On the receipt you were given when the shipment was registered, and in your shipping confirmation. It starts with RDM."
+      },
+      "notAccepted": {
+        "question": "Why is my tracking number not accepted?",
+        "answer": "Check each character carefully. Reduium tracking numbers never contain the letters O, I, L or U, or the digits 0 and 1, so a number with any of those has been mistyped."
+      },
+      "delayed": {
+        "question": "My shipment says “Delayed” or “On Hold”. What now?",
+        "answer": "Open your tracking history to see the most recent note. If you need more detail, contact support with your tracking number and we will look at the shipment record with you."
+      },
+      "updates": {
+        "question": "How often is tracking updated?",
+        "answer": "Every time your shipment is scanned or its status changes, the record is updated. The change appears the next time you check."
+      }
+    }
+  }
+}

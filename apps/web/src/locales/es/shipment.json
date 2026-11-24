@@ -1,0 +1,81 @@
+{
+  "status": {
+    "REGISTERED": {
+      "label": "Envío registrado",
+      "description": "Los datos del envío han sido registrados. A la espera del paquete."
+    },
+    "RECEIVED": {
+      "label": "Paquete recibido",
+      "description": "Reduium ha recibido el paquete."
+    },
+    "PROCESSING_AT_ORIGIN": {
+      "label": "En proceso en la instalación de origen",
+      "description": "El paquete se está clasificando y preparando para su despacho."
+    },
+    "IN_TRANSIT": {
+      "label": "En tránsito",
+      "description": "El paquete se está moviendo por la red de Reduium."
+    },
+    "ARRIVED_AT_SORTING_FACILITY": {
+      "label": "Llegó al centro de clasificación",
+      "description": "El paquete llegó a un centro de clasificación."
+    },
+    "CUSTOMS_CLEARANCE": {
+      "label": "Despacho aduanero",
+      "description": "Las autoridades aduaneras están procesando el paquete."
+    },
+    "DEPARTED_FACILITY": {
+      "label": "Salió de la instalación",
+      "description": "El paquete salió de la instalación hacia su próxima parada."
+    },
+    "OUT_FOR_DELIVERY": {
+      "label": "En reparto",
+      "description": "El paquete está con un repartidor y se entregará hoy."
+    },
+    "DELIVERED": {
+      "label": "Entregado con éxito",
+      "description": "El paquete ha sido entregado."
+    },
+    "DELIVERY_ATTEMPTED": {
+      "label": "Intento de entrega",
+      "description": "Se intentó realizar la entrega, pero no se pudo completar."
+    },
+    "DELAYED": {
+      "label": "Envío retrasado",
+      "description": "El envío está retrasado. Pronto habrá una nueva estimación."
+    },
+    "ON_HOLD": {
+      "label": "Retenido",
+      "description": "El envío está retenido. Comuníquese con soporte para obtener más detalles."
+    }
+  },
+  "method": {
+    "EXPRESS": {
+      "label": "Paquetería exprés",
+      "summary": "Manejo prioritario de documentos y paquetes pequeños, con el menor número de paradas entre la recolección y la entrega.",
+      "bestFor": "Documentos, muestras, pedidos urgentes"
+    },
+    "AIR": {
+      "label": "Carga aérea",
+      "summary": "Carga aérea programada para envíos urgentes entre países y continentes.",
+      "bestFor": "Carga de alto valor o con plazos críticos"
+    },
+    "OCEAN": {
+      "label": "Carga marítima",
+      "summary": "Envío en contenedores completos y compartidos para grandes volúmenes, cuando el costo importa más que la velocidad.",
+      "bestFor": "Inventario a granel, mercancía pesada y sobredimensionada"
+    },
+    "ROAD": {
+      "label": "Transporte terrestre",
+      "summary": "Transporte por carretera nacional y transfronterizo, además del tramo final desde la instalación hasta la puerta.",
+      "bestFor": "Distribución regional, tarimas"
+    }
+  },
+  "journey": {
+    "registered": "Registrado",
+    "origin": "En origen",
+    "transit": "En tránsito",
+    "delivery": "En reparto",
+    "delivered": "Entregado"
+  }
+}

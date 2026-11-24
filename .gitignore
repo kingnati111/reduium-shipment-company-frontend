@@ -1,0 +1,36 @@
+# ── Secrets: never commit these ─────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+# npm login tokens
+.npmrc
+# Database backups/exports (may contain customer data). Migrations (*.sql) ARE committed.
+*.dump
+*.backup
+backups/
+
+# ── Dependencies & build output ─────────────────────────────
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+# Prisma client, generated from prisma/schema.prisma by `npm run db:generate`
+apps/api/src/generated/
+
+# ── Test output ─────────────────────────────────────────────
+coverage/
+playwright-report/
+test-results/
+
+# ── Logs & OS/editor files ──────────────────────────────────
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/

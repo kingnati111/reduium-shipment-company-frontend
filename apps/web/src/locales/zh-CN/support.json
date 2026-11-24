@@ -1,0 +1,64 @@
+{
+  "documentTitle": "客户支持 | Reduium",
+  "page": {
+    "eyebrow": "客户支持",
+    "heading": "联系 Reduium",
+    "email": "电子邮件",
+    "phone": "电话",
+    "hours": "服务时间",
+    "headOffice": "总部"
+  },
+  "form": {
+    "title": "给我们留言",
+    "requiredNote": "标有 <star>*</star><sr>（必填）</sr> 的字段为必填项。您的留言将发送给 Reduium 客户支持团队。",
+    "errorSummary_other": "请修正下方标出的 {{count, number}} 个字段。",
+    "fields": {
+      "name": "您的姓名 *",
+      "email": "电子邮件地址 *",
+      "emailHint": "我们将通过此地址回复您。",
+      "phone": "电话（选填）",
+      "trackingNumber": "运单号（选填）",
+      "trackingNumberHint": "如果您的留言与某件货物有关。",
+      "topic": "留言主题 *",
+      "topicPlaceholder": "请选择…",
+      "subject": "标题 *",
+      "message": "留言内容 *",
+      "messageCount": "{{count, number}} / {{max, number}} 个字符"
+    },
+    "honeypot": "请勿填写此字段",
+    "privacy": "我们仅使用这些信息回复您的留言。信息将被安全保存，仅 Reduium 员工可见。我们目前暂不发送确认邮件：提交后，您会看到一个需要保存的参考编号。",
+    "send": "发送留言",
+    "sending": "正在发送…"
+  },
+  "topics": {
+    "TRACKING": "物流查询问题",
+    "DELIVERY_PROBLEM": "派送问题",
+    "DAMAGED_OR_MISSING": "物品损坏或丢失",
+    "BILLING": "账单",
+    "OTHER": "其他问题"
+  },
+  "errors": {
+    "nameRequired": "请填写姓名。",
+    "emailRequired": "请填写电子邮件地址。",
+    "emailInvalid": "请输入有效的电子邮件地址。",
+    "phoneInvalid": "请输入有效的电话号码，例如 +44 20 7946 0000。",
+    "trackingNumberInvalid": "这看起来不像 Reduium 运单号。正确格式为 RDM-XXXX-XXXX-X。",
+    "topicRequired": "请选择留言主题。",
+    "subjectRequired": "请填写标题。",
+    "messageTooShort": "请至少输入 10 个字符。",
+    "fieldInvalid": "请检查此字段。",
+    "checkForm": "请检查表单。",
+    "rejected": "您的留言未能发送。请重试，或通过电子邮件或电话联系我们。",
+    "rateLimited": "我们最近已收到您的多条留言。请稍候再发送，或通过电子邮件或电话联系我们。",
+    "unavailable": "联系表单暂时无法使用。请通过电子邮件或电话联系我们。",
+    "network": "您的留言未能发送。请检查网络连接后重试，或通过电子邮件或电话联系我们。"
+  },
+  "receipt": {
+    "title": "留言已收到",
+    "body": "谢谢。您的留言已保存，Reduium 客户支持团队将会处理。您的参考编号是：",
+    "copy": "复制参考编号",
+    "copied": "已复制",
+    "note": "如再次联系我们，请提供此参考编号。我们不会发送确认邮件，请记下此编号。我们将回复至您填写的电子邮件地址。",
+    "another": "再发送一条留言"
+  }
+}

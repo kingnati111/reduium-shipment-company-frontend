@@ -1,0 +1,115 @@
+{
+  "documentTitle": "Reduium Shipment Company | 查询您的包裹",
+  "hero": {
+    "eyebrow": "国际包裹与货运物流",
+    "title": "每一件货物，<highlight>全程</highlight>有据可查。",
+    "intro": "Reduium 跨境运输包裹和货物，并记录沿途的每一次交接。输入运单号，即可查看货物当前位置以及下一步安排。",
+    "numberHint": "运单号以 <code>RDM</code> 开头，印在您的收据和发货确认单上。",
+    "diagramTitle": "货物如何运输",
+    "diagramBadge": "示意图",
+    "pausePhotos": "暂停背景图片",
+    "playPhotos": "播放背景图片"
+  },
+  "routeDiagram": {
+    "title": "示意图：货物从始发地出发，经分拣中心和海关，抵达目的地。",
+    "origin": "始发地",
+    "sortingHub": "分拣中心",
+    "customs": "海关",
+    "destination": "目的地"
+  },
+  "about": {
+    "eyebrow": "关于 Reduium",
+    "title": "让每条记录清晰准确的物流伙伴。",
+    "paragraph1": "Reduium Shipment Company 为企业和个人运输包裹与货物，覆盖同城与跨境。揽收、分拣、干线运输、清关和末端派送作为一条连续的链条统一管理。",
+    "paragraph2": "我们的运营基于一个简单的理念：您应该随时知道货物在哪里、由谁负责、接下来会发生什么。每一次交接都会被记录，您看到的记录正是我们工作所依据的记录。",
+    "badge": "Reduium · 货运"
+  },
+  "services": {
+    "eyebrow": "服务",
+    "title": "四种运输方式。",
+    "intro": "根据时效、体积和预算进行选择。所有服务都在同一个可追踪的网络中运行。",
+    "bestFor": "适用于",
+    "includedTitle": "所有服务均包含",
+    "included": {
+      "oneNumber": "从揽收到派送，全程使用同一个运单号",
+      "scans": "每次到达和离开站点均有扫描记录",
+      "customs": "清关状态显示在您的物流记录中"
+    }
+  },
+  "why": {
+    "eyebrow": "为什么选择 Reduium",
+    "title": "以记录为核心。",
+    "intro": "运输问题往往出在交接之间的空档。我们记录每一次交接并向您展示，从而消除这些空档。",
+    "reasons": {
+      "oneNumber": {
+        "title": "一个单号，全程通用",
+        "body": "无论由哪项服务承运，您的货物从登记到派送都使用同一个 Reduium 运单号。"
+      },
+      "handovers": {
+        "title": "每次交接均有记录",
+        "body": "每一次扫描、到达和离开站点，都会在您的物流记录中生成一条带时间和地点的条目。"
+      },
+      "problems": {
+        "title": "问题直言不讳",
+        "body": "如果货物延误、被暂扣或派送失败，状态会如实显示，不会只是含糊的“处理中”。"
+      },
+      "support": {
+        "title": "客服看到的与您一致",
+        "body": "提供运单号联系我们，我们的团队将依据与您屏幕上相同的货物记录为您处理。"
+      }
+    }
+  },
+  "how": {
+    "eyebrow": "查询说明",
+    "title": "三步掌握全部信息。",
+    "steps": {
+      "find": {
+        "title": "找到运单号",
+        "body": "运单号印在您的收据和发货确认单上，格式如 <code>RDM-XXXX-XXXX-X</code>。"
+      },
+      "enter": {
+        "title": "输入运单号",
+        "body": "在<link>查询框</link>中输入。大小写和空格均不影响查询。"
+      },
+      "read": {
+        "title": "查看物流记录",
+        "body": "查看当前状态和位置、预计送达日期，以及每条记录事件的时间和地点。"
+      }
+    },
+    "statusesTitle": "各状态的含义",
+    "statusesIntro": "您物流记录中的每条更新都使用以下状态之一。",
+    "normal": "正常进展",
+    "attention": "需要关注"
+  },
+  "support": {
+    "eyebrow": "客户支持",
+    "title": "对货物有疑问？",
+    "intro": "请准备好您的运单号，以便我们立即找到您的货物。",
+    "channels": {
+      "email": "电子邮件",
+      "phone": "电话",
+      "hours": "服务时间",
+      "headOffice": "总部"
+    },
+    "sendMessage": "给我们留言",
+    "faqTitle": "常见问题",
+    "faq": {
+      "findNumber": {
+        "question": "在哪里可以找到运单号？",
+        "answer": "在登记货物时您获得的收据上，以及您的发货确认单中。运单号以 RDM 开头。"
+      },
+      "notAccepted": {
+        "question": "为什么我的运单号无法识别？",
+        "answer": "请仔细核对每个字符。Reduium 运单号中不会出现字母 O、I、L、U，也不会出现数字 0 和 1，含有这些字符的运单号说明输入有误。"
+      },
+      "delayed": {
+        "question": "我的货物显示“运输延误”或“已暂扣”，该怎么办？",
+        "answer": "请打开物流记录查看最新备注。如需了解更多详情，请提供运单号联系客户支持，我们将与您一起查看货物记录。"
+      },
+      "updates": {
+        "question": "物流信息多久更新一次？",
+        "answer": "每当您的货物被扫描或状态发生变化时，记录都会更新。下次查询时即可看到变化。"
+      }
+    }
+  }
+}

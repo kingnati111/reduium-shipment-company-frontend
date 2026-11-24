@@ -1,0 +1,66 @@
+{
+  "documentTitle": "Atendimento ao cliente | Reduium",
+  "page": {
+    "eyebrow": "Atendimento ao cliente",
+    "heading": "Fale com a Reduium",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "hours": "Horário",
+    "headOffice": "Sede"
+  },
+  "form": {
+    "title": "Envie uma mensagem",
+    "requiredNote": "Os campos marcados com <star>*</star><sr>como obrigatórios</sr> são obrigatórios. Sua mensagem vai para a equipe de suporte da Reduium.",
+    "errorSummary_one": "Corrija o campo destacado abaixo.",
+    "errorSummary_many": "Corrija os {{count, number}} campos destacados abaixo.",
+    "errorSummary_other": "Corrija os {{count, number}} campos destacados abaixo.",
+    "fields": {
+      "name": "Seu nome *",
+      "email": "Endereço de e-mail *",
+      "emailHint": "Usaremos este endereço para responder a você.",
+      "phone": "Telefone (opcional)",
+      "trackingNumber": "Código de rastreamento (opcional)",
+      "trackingNumberHint": "Se a sua mensagem for sobre um envio.",
+      "topic": "Qual é o assunto? *",
+      "topicPlaceholder": "Escolha uma opção…",
+      "subject": "Assunto *",
+      "message": "Mensagem *",
+      "messageCount": "{{count, number}} de {{max, number}} caracteres"
+    },
+    "honeypot": "Deixe este campo em branco",
+    "privacy": "Usamos esses dados apenas para responder à sua mensagem. Eles são armazenados com segurança e só a equipe da Reduium pode vê-los. Ainda não enviamos e-mails de confirmação: depois do envio, você verá uma referência para guardar.",
+    "send": "Enviar mensagem",
+    "sending": "Enviando…"
+  },
+  "topics": {
+    "TRACKING": "Uma dúvida sobre rastreamento",
+    "DELIVERY_PROBLEM": "Um problema na entrega",
+    "DAMAGED_OR_MISSING": "Um item danificado ou faltando",
+    "BILLING": "Cobrança",
+    "OTHER": "Outro assunto"
+  },
+  "errors": {
+    "nameRequired": "O nome é obrigatório.",
+    "emailRequired": "O e-mail é obrigatório.",
+    "emailInvalid": "Digite um endereço de e-mail válido.",
+    "phoneInvalid": "Digite um número de telefone válido, por exemplo, +44 20 7946 0000.",
+    "trackingNumberInvalid": "Isso não parece um código de rastreamento Reduium. Ele deve ter este formato: RDM-XXXX-XXXX-X.",
+    "topicRequired": "Escolha o assunto da sua mensagem.",
+    "subjectRequired": "O assunto é obrigatório.",
+    "messageTooShort": "Escreva pelo menos 10 caracteres.",
+    "fieldInvalid": "Confira este campo.",
+    "checkForm": "Confira o formulário.",
+    "rejected": "Não foi possível enviar sua mensagem. Tente novamente ou fale conosco por e-mail ou telefone.",
+    "rateLimited": "Recebemos várias mensagens suas recentemente. Aguarde um pouco antes de enviar outra, ou fale conosco por e-mail ou telefone.",
+    "unavailable": "O formulário de contato está temporariamente indisponível. Fale conosco por e-mail ou telefone.",
+    "network": "Não conseguimos enviar sua mensagem. Verifique sua conexão e tente novamente, ou fale conosco por e-mail ou telefone."
+  },
+  "receipt": {
+    "title": "Mensagem recebida",
+    "body": "Obrigado. Sua mensagem foi salva para a equipe de suporte da Reduium. Sua referência é:",
+    "copy": "Copiar referência",
+    "copied": "Copiada",
+    "note": "Informe esta referência se entrar em contato novamente. Não enviamos e-mail de confirmação, então anote-a. Responderemos no endereço de e-mail que você informou.",
+    "another": "Enviar outra mensagem"
+  }
+}

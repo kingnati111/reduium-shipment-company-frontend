@@ -1,0 +1,85 @@
+{
+  "documentTitle": "Paket verfolgen | Reduium",
+  "documentTitleWithNumber": "{{trackingNumber}} | Sendungsverfolgung | Reduium",
+  "heading": "Paket verfolgen",
+  "trackAnother": "Weitere Sendung verfolgen",
+  "announce": {
+    "looking": "{{trackingNumber}} wird gesucht",
+    "found": "Sendung {{trackingNumber}} gefunden. Status: {{status}}.",
+    "notFound": "Keine Sendung für {{trackingNumber}} gefunden.",
+    "rateLimited": "Zu viele Abfragen. Bitte warten Sie und versuchen Sie es erneut.",
+    "failed": "Die Sendungsverfolgung konnte nicht geladen werden."
+  },
+  "form": {
+    "label": "Sendungsnummer",
+    "submit": "Paket verfolgen",
+    "required": "Bitte geben Sie eine Sendungsnummer ein.",
+    "invalid": "Das sieht nicht wie eine Reduium-Sendungsnummer aus. Sie sollte so aussehen: RDM-XXXX-XXXX-X."
+  },
+  "states": {
+    "loading": "<code>{{trackingNumber}}</code> wird gesucht …",
+    "notFound": {
+      "title": "Keine Sendung gefunden",
+      "body1": "Wir konnten keine Sendung mit der Sendungsnummer <code>{{trackingNumber}}</code> finden.",
+      "body2": "Vergleichen Sie sie mit Ihrem Beleg oder Ihrer Versandbestätigung. Wenn sie übereinstimmt und trotzdem nicht gefunden wird, kontaktieren Sie den Kundenservice – wir gehen der Sache nach.",
+      "contactSupport": "Kundenservice kontaktieren"
+    },
+    "invalid": {
+      "title": "Das ist keine gültige Sendungsnummer",
+      "example": "Sendungsnummern sehen so aus: <code>RDM-7K4P-9X2Q-R</code>."
+    },
+    "rateLimited": {
+      "title": "Zu viele Abfragen",
+      "body_one": "Zum Schutz der Sendungen unserer Kunden begrenzen wir, wie viele Abfragen in kurzer Zeit möglich sind. Bitte versuchen Sie es in etwa {{count, number}} Minute erneut.",
+      "body_other": "Zum Schutz der Sendungen unserer Kunden begrenzen wir, wie viele Abfragen in kurzer Zeit möglich sind. Bitte versuchen Sie es in etwa {{count, number}} Minuten erneut."
+    },
+    "error": {
+      "title": "Die Sendungsverfolgung kann gerade nicht geladen werden",
+      "body": "Bei uns oder mit der Verbindung ist etwas schiefgelaufen. Ihre Sendung ist davon nicht betroffen. Bitte versuchen Sie es gleich noch einmal.",
+      "retry": "Erneut versuchen"
+    },
+    "intro": {
+      "title": "Geben Sie eine Sendungsnummer ein",
+      "body": "Ihre Sendungsnummer beginnt mit <code>RDM</code> und steht auf Ihrem Beleg und Ihrer Versandbestätigung."
+    }
+  },
+  "summary": {
+    "shipment": "Sendung",
+    "trackingNumberLabel": "Sendungsnummer",
+    "testData": "<strong>Testdaten.</strong> Dies ist eine Beispielsendung aus der Entwicklung, keine echte Lieferung.",
+    "deliveredAt": "Zugestellt am {{date}}.",
+    "route": "Route",
+    "routeTo": "nach",
+    "currentLocation": "Aktueller Standort",
+    "delivered": "Zugestellt",
+    "estimatedDelivery": "Voraussichtliche Zustellung",
+    "mayChange": "Kann sich ändern: Sendung verzögert",
+    "service": "Leistung",
+    "lastUpdate": "Letzte Aktualisierung",
+    "notAvailable": "Noch nicht verfügbar",
+    "advice": {
+      "DELAYED": "Ihre Sendung hat Verspätung. Sie ist weiterhin unterwegs, und diese Seite wird laufend aktualisiert. Die unten angegebene Zustellschätzung kann sich ändern.",
+      "ON_HOLD": "Ihre Sendung ist angehalten und muss geprüft werden, bevor sie weiterbefördert werden kann. Bitte <support>kontaktieren Sie den Kundenservice</support> und nennen Sie Ihre Sendungsnummer.",
+      "DELIVERY_ATTEMPTED": "Wir haben versucht zuzustellen, konnten die Zustellung aber nicht abschließen. Achten Sie auf eine Benachrichtigungskarte oder Nachricht des Zustellers, oder <support>kontaktieren Sie den Kundenservice</support>, um eine erneute Zustellung zu vereinbaren."
+    }
+  },
+  "history": {
+    "title": "Sendungsverlauf",
+    "count_one": "{{count, number}} Aktualisierung",
+    "count_other": "{{count, number}} Aktualisierungen",
+    "empty": "Für diese Sendung wurden noch keine Aktualisierungen erfasst. Sie erscheinen hier, sobald die Sendung gescannt wird.",
+    "note": "Älteste zuerst. Zeiten werden in Ihrer Zeitzone angezeigt ({{timeZone}}).",
+    "listLabel": "Sendungsverlauf, älteste zuerst",
+    "latest": "Neueste Aktualisierung",
+    "location": "Ort:"
+  },
+  "journey": {
+    "label": "Sendungsfortschritt",
+    "step": "Schritt {{index, number}} von {{total, number}}:",
+    "state": {
+      "complete": "abgeschlossen",
+      "current": "aktuelle Etappe",
+      "upcoming": "bevorstehend"
+    }
+  }
+}

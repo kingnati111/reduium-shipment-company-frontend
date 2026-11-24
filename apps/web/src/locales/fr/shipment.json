@@ -1,0 +1,81 @@
+{
+  "status": {
+    "REGISTERED": {
+      "label": "Envoi enregistré",
+      "description": "Les informations de l’envoi ont été enregistrées. En attente du colis."
+    },
+    "RECEIVED": {
+      "label": "Colis reçu",
+      "description": "Le colis a été reçu par Reduium."
+    },
+    "PROCESSING_AT_ORIGIN": {
+      "label": "Traitement au site d’origine",
+      "description": "Le colis est en cours de tri et de préparation pour l’expédition."
+    },
+    "IN_TRANSIT": {
+      "label": "En transit",
+      "description": "Le colis circule dans le réseau Reduium."
+    },
+    "ARRIVED_AT_SORTING_FACILITY": {
+      "label": "Arrivé au centre de tri",
+      "description": "Le colis est arrivé dans un centre de tri."
+    },
+    "CUSTOMS_CLEARANCE": {
+      "label": "Dédouanement",
+      "description": "Le colis est en cours de traitement par les autorités douanières."
+    },
+    "DEPARTED_FACILITY": {
+      "label": "Parti du site",
+      "description": "Le colis a quitté le site pour sa prochaine étape."
+    },
+    "OUT_FOR_DELIVERY": {
+      "label": "En cours de livraison",
+      "description": "Le colis est entre les mains d’un livreur et sera livré aujourd’hui."
+    },
+    "DELIVERED": {
+      "label": "Livré avec succès",
+      "description": "Le colis a été livré."
+    },
+    "DELIVERY_ATTEMPTED": {
+      "label": "Tentative de livraison",
+      "description": "Une tentative de livraison a eu lieu mais n’a pas pu aboutir."
+    },
+    "DELAYED": {
+      "label": "Envoi retardé",
+      "description": "L’envoi est retardé. Une nouvelle estimation suivra."
+    },
+    "ON_HOLD": {
+      "label": "En attente",
+      "description": "L’envoi est en attente. Contactez l’assistance pour en savoir plus."
+    }
+  },
+  "method": {
+    "EXPRESS": {
+      "label": "Colis express",
+      "summary": "Traitement prioritaire des documents et petits colis, avec le moins d’arrêts possible entre l’enlèvement et la livraison.",
+      "bestFor": "Documents, échantillons, commandes urgentes"
+    },
+    "AIR": {
+      "label": "Fret aérien",
+      "summary": "Fret aérien régulier pour les envois urgents entre pays et continents.",
+      "bestFor": "Marchandises de valeur ou urgentes"
+    },
+    "OCEAN": {
+      "label": "Fret maritime",
+      "summary": "Transport en conteneurs complets ou partagés pour les gros volumes, lorsque le coût compte plus que la rapidité.",
+      "bestFor": "Stocks en vrac, marchandises lourdes et hors gabarit"
+    },
+    "ROAD": {
+      "label": "Transport routier",
+      "summary": "Transport routier national et transfrontalier, ainsi que le dernier trajet du site jusqu’à la porte.",
+      "bestFor": "Distribution régionale, palettes"
+    }
+  },
+  "journey": {
+    "registered": "Enregistré",
+    "origin": "À l’origine",
+    "transit": "En transit",
+    "delivery": "En livraison",
+    "delivered": "Livré"
+  }
+}

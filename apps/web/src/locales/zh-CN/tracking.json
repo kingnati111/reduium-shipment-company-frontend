@@ -1,0 +1,83 @@
+{
+  "documentTitle": "查询包裹 | Reduium",
+  "documentTitleWithNumber": "{{trackingNumber}} | 查询 | Reduium",
+  "heading": "查询包裹",
+  "trackAnother": "查询其他货物",
+  "announce": {
+    "looking": "正在查询 {{trackingNumber}}",
+    "found": "已找到货物 {{trackingNumber}}。状态：{{status}}。",
+    "notFound": "未找到运单号为 {{trackingNumber}} 的货物。",
+    "rateLimited": "查询次数过多，请稍后重试。",
+    "failed": "无法加载物流信息。"
+  },
+  "form": {
+    "label": "运单号",
+    "submit": "查询包裹",
+    "required": "请输入运单号。",
+    "invalid": "这看起来不像 Reduium 运单号。正确格式为 RDM-XXXX-XXXX-X。"
+  },
+  "states": {
+    "loading": "正在查询 <code>{{trackingNumber}}</code>…",
+    "notFound": {
+      "title": "未找到货物",
+      "body1": "我们未找到运单号为 <code>{{trackingNumber}}</code> 的货物。",
+      "body2": "请与您的收据或发货确认单进行核对。如果运单号一致但仍无法找到，请联系客户支持，我们会为您核查。",
+      "contactSupport": "联系客户支持"
+    },
+    "invalid": {
+      "title": "该运单号无效",
+      "example": "运单号格式如下：<code>RDM-7K4P-9X2Q-R</code>。"
+    },
+    "rateLimited": {
+      "title": "查询次数过多",
+      "body_other": "为保护客户的货物信息，我们限制短时间内的查询次数。请在约 {{count, number}} 分钟后重试。"
+    },
+    "error": {
+      "title": "暂时无法加载物流信息",
+      "body": "我们这边或网络连接出现了问题。您的货物不受影响。请稍后重试。",
+      "retry": "重试"
+    },
+    "intro": {
+      "title": "输入运单号开始查询",
+      "body": "您的运单号以 <code>RDM</code> 开头，印在您的收据和发货确认单上。"
+    }
+  },
+  "summary": {
+    "shipment": "货物",
+    "trackingNumberLabel": "运单号",
+    "testData": "<strong>测试数据。</strong>这是开发环境中的示例货物，并非真实派送。",
+    "deliveredAt": "已于 {{date}} 送达。",
+    "route": "路线",
+    "routeTo": "至",
+    "currentLocation": "当前位置",
+    "delivered": "送达时间",
+    "estimatedDelivery": "预计送达",
+    "mayChange": "可能变动：运输延误",
+    "service": "服务",
+    "lastUpdate": "最近更新",
+    "notAvailable": "暂无信息",
+    "advice": {
+      "DELAYED": "您的货物运输延误，但仍在途中，本页面会随运输进展更新。下方的预计送达时间可能会变动。",
+      "ON_HOLD": "您的货物已暂停运输，需要处理后才能继续。请提供运单号<support>联系客户支持</support>。",
+      "DELIVERY_ATTEMPTED": "我们尝试派送，但未能完成。请留意快递员留下的通知卡或消息，或<support>联系客户支持</support>安排重新派送。"
+    }
+  },
+  "history": {
+    "title": "物流记录",
+    "count_other": "{{count, number}} 条更新",
+    "empty": "该货物暂无物流更新记录。货物被扫描后，更新会立即显示在这里。",
+    "note": "按时间从早到晚排列。时间以您所在的时区显示（{{timeZone}}）。",
+    "listLabel": "物流记录，按时间从早到晚排列",
+    "latest": "最新更新",
+    "location": "地点："
+  },
+  "journey": {
+    "label": "运输进度",
+    "step": "第 {{index, number}} 步，共 {{total, number}} 步：",
+    "state": {
+      "complete": "已完成",
+      "current": "当前阶段",
+      "upcoming": "待进行"
+    }
+  }
+}

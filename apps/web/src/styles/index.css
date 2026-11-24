@@ -1,0 +1,222 @@
+@import 'tailwindcss';
+
+/*
+ * ── Reduium design tokens ───────────────────────────────────────────────────
+ * "The manifest": the visual language of freight paperwork.
+ * Every colour, font and radius in the app comes from here. Change a value
+ * once and the whole site follows.
+ */
+@theme {
+  /* Typography */
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Brand colours */
+  --color-ink: #0b1626; /* primary dark: text, header, footer */
+  --color-ink-800: #1c2a3d;
+  --color-ink-600: #3e4c5e; /* secondary text */
+  --color-ink-400: #6b7686; /* tertiary text, meta labels */
+  --color-harbor: #16344f; /* secondary dark: panels, admin sidebar */
+  --color-harbor-700: #1f4566;
+  --color-paper: #f5f2eb; /* warm page background */
+  --color-paper-50: #fbf9f5; /* cards on paper */
+  --color-fog: #d9d4c7; /* borders, dividers */
+  --color-fog-200: #e8e3d8; /* quiet surfaces */
+  --color-signal: #ff5a1f; /* international orange: actions + live state only */
+  --color-signal-600: #e9490f;
+  --color-signal-50: #fff1ea;
+
+  /* Status tones: text / background / border. Always paired with icon + label. */
+  --color-tone-neutral: #4b5565;
+  --color-tone-neutral-bg: #ece8df;
+  --color-tone-progress: #1d56ad;
+  --color-tone-progress-bg: #e7eefa;
+  --color-tone-success: #146c46;
+  --color-tone-success-bg: #e2f2e9;
+  --color-tone-caution: #8a5a00;
+  --color-tone-caution-bg: #fbf0d6;
+  --color-tone-critical: #b42318;
+  --color-tone-critical-bg: #fbe6e2;
+
+  /* Shape & depth: precise, not bubbly */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --shadow-card: 0 1px 0 rgb(11 22 38 / 0.04), 0 8px 24px -12px rgb(11 22 38 / 0.18);
+  --shadow-lift: 0 2px 0 rgb(11 22 38 / 0.05), 0 18px 40px -16px rgb(11 22 38 / 0.28);
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings:
+      'ss01',
+      'tnum' 0;
+    -webkit-font-smoothing: antialiased;
+    /* A word too long for its line (a long German compound, an email
+       address) wraps instead of making the page wider than the screen. */
+    overflow-wrap: break-word;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Expanded display type for headlines (Archivo width axis at 125%). */
+  .type-display {
+    font-stretch: 125%;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+  }
+
+  /* Small uppercase mono label used like a field label on a waybill. */
+  .type-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Tabular data: tracking numbers, timestamps, coordinates. */
+  .type-data {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums slashed-zero;
+    letter-spacing: 0.02em;
+  }
+
+  /* Dashed rule, like a tear-off line on shipping paperwork. */
+  .rule-perforated {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-fog) 55%, transparent 0);
+    background-size: 8px 1px;
+  }
+}
+
+/* Hero route illustration */
+@keyframes route-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes route-pulse {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+.route-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: route-pulse 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Arabic letters join to their neighbours; letter-spacing pulls them apart and
+ * breaks the script. Labels and headings use letter-spacing for Latin text,
+ * so it is switched off for Arabic. (Outside any @layer on purpose: un-layered
+ * rules take precedence over Tailwind's utility layer.)
+ */
+:lang(ar),
+:lang(ar) * {
+  letter-spacing: normal;
+}
+
+/*
+ * Fonts for scripts our brand font (Archivo) does not cover. Latin letters and
+ * digits keep Archivo; Arabic, Hebrew, Chinese and Japanese characters use a
+ * font already installed on the visitor's device (Windows, macOS/iOS, Android,
+ * Linux), so nothing extra is downloaded. Chinese and Japanese get separate
+ * lists because the same character is drawn differently in each.
+ */
+html:lang(ar) {
+  --font-sans:
+    'Archivo Variable', 'Segoe UI', 'SF Arabic', 'Geeza Pro', 'Noto Sans Arabic', Tahoma, system-ui,
+    sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'Segoe UI', 'SF Arabic', 'Geeza Pro', 'Noto Sans Arabic',
+    monospace;
+}
+html:lang(he) {
+  --font-sans:
+    'Archivo Variable', 'Segoe UI', 'SF Hebrew', 'Arial Hebrew', 'Noto Sans Hebrew', Arial,
+    system-ui, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'Segoe UI', 'Arial Hebrew', 'Noto Sans Hebrew', monospace;
+}
+html:lang(zh-Hans),
+html:lang(zh-CN) {
+  --font-sans:
+    'Archivo Variable', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Noto Sans CJK SC',
+    'Source Han Sans SC', system-ui, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', monospace;
+}
+html:lang(zh-Hant),
+html:lang(zh-TW) {
+  --font-sans:
+    'Archivo Variable', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Noto Sans CJK TC',
+    'Source Han Sans TC', system-ui, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans CJK TC',
+    monospace;
+}
+html:lang(ja) {
+  --font-sans:
+    'Archivo Variable', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Yu Gothic',
+    Meiryo, 'Noto Sans JP', 'Noto Sans CJK JP', system-ui, sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'Hiragino Sans', 'Yu Gothic UI', Meiryo, 'Noto Sans CJK JP',
+    monospace;
+}
+/* Japanese and Chinese have no spaces between words: let headings break at
+   natural phrase boundaries where the browser supports it. */
+:lang(ja) :is(h1, h2, h3),
+:lang(zh) :is(h1, h2, h3) {
+  word-break: auto-phrase;
+}

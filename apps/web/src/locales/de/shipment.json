@@ -1,0 +1,81 @@
+{
+  "status": {
+    "REGISTERED": {
+      "label": "Sendung registriert",
+      "description": "Die Sendungsdaten wurden erfasst. Das Paket wird erwartet."
+    },
+    "RECEIVED": {
+      "label": "Paket eingegangen",
+      "description": "Das Paket ist bei Reduium eingegangen."
+    },
+    "PROCESSING_AT_ORIGIN": {
+      "label": "In Bearbeitung im Abgangszentrum",
+      "description": "Das Paket wird sortiert und für den Versand vorbereitet."
+    },
+    "IN_TRANSIT": {
+      "label": "Unterwegs",
+      "description": "Das Paket ist im Reduium-Netzwerk unterwegs."
+    },
+    "ARRIVED_AT_SORTING_FACILITY": {
+      "label": "Im Sortierzentrum eingetroffen",
+      "description": "Das Paket ist in einem Sortierzentrum eingetroffen."
+    },
+    "CUSTOMS_CLEARANCE": {
+      "label": "Zollabfertigung",
+      "description": "Das Paket wird von den Zollbehörden bearbeitet."
+    },
+    "DEPARTED_FACILITY": {
+      "label": "Einrichtung verlassen",
+      "description": "Das Paket hat die Einrichtung in Richtung nächster Station verlassen."
+    },
+    "OUT_FOR_DELIVERY": {
+      "label": "In Zustellung",
+      "description": "Das Paket ist beim Zusteller und wird heute geliefert."
+    },
+    "DELIVERED": {
+      "label": "Erfolgreich zugestellt",
+      "description": "Das Paket wurde zugestellt."
+    },
+    "DELIVERY_ATTEMPTED": {
+      "label": "Zustellversuch",
+      "description": "Ein Zustellversuch wurde unternommen, konnte aber nicht abgeschlossen werden."
+    },
+    "DELAYED": {
+      "label": "Sendung verzögert",
+      "description": "Die Sendung verzögert sich. Eine neue Schätzung folgt."
+    },
+    "ON_HOLD": {
+      "label": "Zurückgehalten",
+      "description": "Die Sendung wird zurückgehalten. Wenden Sie sich für Details an den Kundenservice."
+    }
+  },
+  "method": {
+    "EXPRESS": {
+      "label": "Expresspaket",
+      "summary": "Bevorzugte Behandlung für Dokumente und kleine Pakete, mit möglichst wenigen Stationen zwischen Abholung und Zustellung.",
+      "bestFor": "Dokumente, Muster, eilige Bestellungen"
+    },
+    "AIR": {
+      "label": "Luftfracht",
+      "summary": "Planmäßige Luftfracht für zeitkritische Sendungen zwischen Ländern und Kontinenten.",
+      "bestFor": "Hochwertige oder zeitkritische Fracht"
+    },
+    "OCEAN": {
+      "label": "Seefracht",
+      "summary": "Voll- und Sammelcontainer für große Mengen, wenn die Kosten wichtiger sind als die Geschwindigkeit.",
+      "bestFor": "Massenware, schwere und übergroße Güter"
+    },
+    "ROAD": {
+      "label": "Straße & Landweg",
+      "summary": "Inländischer und grenzüberschreitender Lkw-Transport sowie die letzte Strecke von der Einrichtung bis zur Haustür.",
+      "bestFor": "Regionale Verteilung, Paletten"
+    }
+  },
+  "journey": {
+    "registered": "Registriert",
+    "origin": "Am Ursprung",
+    "transit": "Unterwegs",
+    "delivery": "In Zustellung",
+    "delivered": "Zugestellt"
+  }
+}

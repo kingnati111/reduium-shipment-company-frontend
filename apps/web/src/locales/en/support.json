@@ -1,0 +1,65 @@
+{
+  "documentTitle": "Customer support | Reduium",
+  "page": {
+    "eyebrow": "Customer support",
+    "heading": "Contact Reduium",
+    "email": "Email",
+    "phone": "Phone",
+    "hours": "Hours",
+    "headOffice": "Head office"
+  },
+  "form": {
+    "title": "Send us a message",
+    "requiredNote": "Fields marked <star>*</star><sr>as required</sr> are required. Your message goes to the Reduium support team.",
+    "errorSummary_one": "Please fix the highlighted field below.",
+    "errorSummary_other": "Please fix the {{count, number}} highlighted fields below.",
+    "fields": {
+      "name": "Your name *",
+      "email": "Email address *",
+      "emailHint": "We'll use this to reply to you.",
+      "phone": "Phone (optional)",
+      "trackingNumber": "Tracking number (optional)",
+      "trackingNumberHint": "If your message is about a shipment.",
+      "topic": "What is it about? *",
+      "topicPlaceholder": "Choose one…",
+      "subject": "Subject *",
+      "message": "Message *",
+      "messageCount": "{{count, number}} of {{max, number}} characters"
+    },
+    "honeypot": "Leave this field empty",
+    "privacy": "We use these details only to answer your message. They are stored securely and are visible only to Reduium staff. We don't send confirmation emails yet: after sending, you'll see a reference to keep.",
+    "send": "Send message",
+    "sending": "Sending…"
+  },
+  "topics": {
+    "TRACKING": "A tracking question",
+    "DELIVERY_PROBLEM": "A delivery problem",
+    "DAMAGED_OR_MISSING": "A damaged or missing item",
+    "BILLING": "Billing",
+    "OTHER": "Something else"
+  },
+  "errors": {
+    "nameRequired": "Name is required.",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Enter a valid email address.",
+    "phoneInvalid": "Enter a valid phone number, e.g. +44 20 7946 0000.",
+    "trackingNumberInvalid": "That does not look like a Reduium tracking number. It should look like RDM-XXXX-XXXX-X.",
+    "topicRequired": "Choose what your message is about.",
+    "subjectRequired": "Subject is required.",
+    "messageTooShort": "Please write at least 10 characters.",
+    "fieldInvalid": "Please check this field.",
+    "checkForm": "Please check the form.",
+    "rejected": "Your message could not be sent. Please try again, or contact us by email or phone.",
+    "rateLimited": "We have received several messages from you recently. Please wait a while before sending another, or contact us by email or phone.",
+    "unavailable": "The contact form is temporarily unavailable. Please contact us by email or phone.",
+    "network": "We couldn't send your message. Check your connection and try again, or contact us by email or phone."
+  },
+  "receipt": {
+    "title": "Message received",
+    "body": "Thank you. Your message has been saved for the Reduium support team. Your reference is:",
+    "copy": "Copy reference",
+    "copied": "Copied",
+    "note": "Please quote this reference if you contact us again. We don't send a confirmation email, so keep a note of it. We'll reply to the email address you gave.",
+    "another": "Send another message"
+  }
+}

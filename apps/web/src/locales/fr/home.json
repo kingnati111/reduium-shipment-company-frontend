@@ -1,0 +1,115 @@
+{
+  "documentTitle": "Reduium Shipment Company | Suivez votre colis",
+  "hero": {
+    "eyebrow": "Logistique internationale de colis et de fret",
+    "title": "Chaque envoi, <highlight>tracé</highlight>.",
+    "intro": "Reduium transporte colis et fret à travers les frontières et enregistre chaque remise en chemin. Saisissez votre numéro de suivi pour savoir où se trouve votre envoi et ce qui va se passer ensuite.",
+    "numberHint": "Les numéros de suivi commencent par <code>RDM</code> et figurent sur votre reçu et votre confirmation d’expédition.",
+    "diagramTitle": "Le parcours d’un envoi",
+    "diagramBadge": "Schéma",
+    "pausePhotos": "Mettre en pause les photos d’arrière-plan",
+    "playPhotos": "Lire les photos d’arrière-plan"
+  },
+  "routeDiagram": {
+    "title": "Schéma : un envoi part de son origine et rejoint sa destination en passant par un centre de tri et la douane.",
+    "origin": "Origine",
+    "sortingHub": "Centre de tri",
+    "customs": "Douane",
+    "destination": "Arrivée"
+  },
+  "about": {
+    "eyebrow": "À propos de Reduium",
+    "title": "Un partenaire logistique qui tient un registre fiable.",
+    "paragraph1": "Reduium Shipment Company transporte colis et fret pour les entreprises et les particuliers, en ville comme à l’international. Enlèvement, tri, transport principal, douane et livraison finale sont gérés comme une seule chaîne continue.",
+    "paragraph2": "Notre activité repose sur une idée simple : vous devez toujours savoir où se trouve votre envoi, qui l’a en charge et ce qui va se passer ensuite. Chaque remise est enregistrée : le registre que vous consultez est celui avec lequel nous travaillons.",
+    "badge": "Reduium · Fret"
+  },
+  "services": {
+    "eyebrow": "Nos services",
+    "title": "Quatre façons de l’expédier.",
+    "intro": "Choisissez selon l’urgence, le volume et le budget. Tous nos services utilisent le même réseau suivi.",
+    "bestFor": "Idéal pour",
+    "includedTitle": "Inclus dans chaque service",
+    "included": {
+      "oneNumber": "Un seul numéro de suivi, de l’enlèvement à la livraison",
+      "scans": "Un scan à chaque arrivée et départ d’un site",
+      "customs": "Le statut douanier affiché dans votre historique de suivi"
+    }
+  },
+  "why": {
+    "eyebrow": "Pourquoi Reduium",
+    "title": "Conçu autour du registre.",
+    "intro": "Les problèmes d’expédition surviennent entre deux remises. Nous comblons ces lacunes en enregistrant chacune d’elles et en vous la montrant.",
+    "reasons": {
+      "oneNumber": {
+        "title": "Un numéro, de bout en bout",
+        "body": "Votre envoi conserve le même numéro de suivi Reduium de l’enregistrement à la livraison, quel que soit le service qui le transporte."
+      },
+      "handovers": {
+        "title": "Chaque remise enregistrée",
+        "body": "Chaque scan, arrivée et départ d’un site devient une entrée horodatée dans votre historique de suivi, avec son lieu."
+      },
+      "problems": {
+        "title": "Des problèmes clairement indiqués",
+        "body": "Si un envoi est retardé, bloqué ou si une tentative de livraison échoue, le statut l’indique exactement. Pas de vague « en cours »."
+      },
+      "support": {
+        "title": "Une assistance qui voit ce que vous voyez",
+        "body": "Contactez-nous avec votre numéro de suivi : notre équipe travaille à partir du même dossier d’envoi que celui affiché sur votre écran."
+      }
+    }
+  },
+  "how": {
+    "eyebrow": "Fonctionnement du suivi",
+    "title": "Trois étapes pour une vue complète.",
+    "steps": {
+      "find": {
+        "title": "Trouvez votre numéro",
+        "body": "Il figure sur votre reçu et votre confirmation d’expédition, sous la forme <code>RDM-XXXX-XXXX-X</code>."
+      },
+      "enter": {
+        "title": "Saisissez-le",
+        "body": "Tapez-le dans le <link>champ de suivi</link>. Majuscules, minuscules et espaces sont acceptés."
+      },
+      "read": {
+        "title": "Consultez la chronologie",
+        "body": "Voyez le statut et l’emplacement actuels, la date de livraison estimée et chaque événement enregistré avec son heure et son lieu."
+      }
+    },
+    "statusesTitle": "Signification de chaque statut",
+    "statusesIntro": "Chaque mise à jour de votre historique de suivi utilise l’un de ces statuts.",
+    "normal": "Progression normale",
+    "attention": "Nécessite une attention"
+  },
+  "support": {
+    "eyebrow": "Service client",
+    "title": "Une question sur un envoi ?",
+    "intro": "Ayez votre numéro de suivi à portée de main : il nous permet de retrouver votre envoi immédiatement.",
+    "channels": {
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "hours": "Horaires",
+      "headOffice": "Siège social"
+    },
+    "sendMessage": "Envoyez-nous un message",
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "findNumber": {
+        "question": "Où trouver mon numéro de suivi ?",
+        "answer": "Sur le reçu remis lors de l’enregistrement de l’envoi, ainsi que dans votre confirmation d’expédition. Il commence par RDM."
+      },
+      "notAccepted": {
+        "question": "Pourquoi mon numéro de suivi n’est-il pas accepté ?",
+        "answer": "Vérifiez soigneusement chaque caractère. Les numéros de suivi Reduium ne contiennent jamais les lettres O, I, L ou U, ni les chiffres 0 et 1 : un numéro qui en contient a été mal saisi."
+      },
+      "delayed": {
+        "question": "Mon envoi indique « Envoi retardé » ou « En attente ». Que faire ?",
+        "answer": "Ouvrez votre historique de suivi pour voir la note la plus récente. Pour plus de détails, contactez l’assistance avec votre numéro de suivi et nous examinerons le dossier d’envoi avec vous."
+      },
+      "updates": {
+        "question": "À quelle fréquence le suivi est-il mis à jour ?",
+        "answer": "Le dossier est mis à jour à chaque scan de votre envoi ou changement de statut. La modification apparaît lors de votre prochaine consultation."
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "skipToContent": "Aller au contenu",
+  "homeLinkLabel": "Accueil de Reduium Shipment Company",
+  "nav": {
+    "mainLabel": "Principale",
+    "mobileLabel": "Navigation mobile",
+    "track": "Suivi",
+    "services": "Services",
+    "howTrackingWorks": "Fonctionnement du suivi",
+    "about": "À propos",
+    "support": "Assistance"
+  },
+  "actions": {
+    "trackPackage": "Suivre un colis",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "goHome": "Retour à l’accueil"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "footer": {
+    "tagline": "Chaque envoi, tracé.",
+    "navigate": "Navigation",
+    "services": "Services",
+    "contact": "Contact",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "headOffice": "Siège social",
+    "customerSupport": "Service client",
+    "copyright": "© {{year}} {{company}}"
+  },
+  "notFound": {
+    "documentTitle": "Page introuvable | Reduium",
+    "eyebrow": "Erreur 404 · Adresse introuvable",
+    "heading": "Cette page n’est pas sur notre itinéraire.",
+    "body": "L’adresse est peut-être mal saisie, ou la page a été déplacée. Vous pouvez suivre un colis ou revenir à la page d’accueil."
+  },
+  "placeholder": {
+    "label": "Provisoire",
+    "hint": "Provisoire : à remplacer dans apps/web/src/config/company.ts"
+  }
+}

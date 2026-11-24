@@ -1,0 +1,83 @@
+{
+  "documentTitle": "荷物を追跡 | Reduium",
+  "documentTitleWithNumber": "{{trackingNumber}} | 追跡 | Reduium",
+  "heading": "荷物を追跡",
+  "trackAnother": "別の荷物を追跡",
+  "announce": {
+    "looking": "{{trackingNumber}} を検索しています",
+    "found": "荷物 {{trackingNumber}} が見つかりました。ステータス：{{status}}。",
+    "notFound": "{{trackingNumber}} の荷物は見つかりませんでした。",
+    "rateLimited": "検索回数が多すぎます。しばらくしてから再度お試しください。",
+    "failed": "追跡情報を読み込めませんでした。"
+  },
+  "form": {
+    "label": "追跡番号",
+    "submit": "荷物を追跡",
+    "required": "追跡番号を入力してください。",
+    "invalid": "Reduium の追跡番号ではないようです。RDM-XXXX-XXXX-X の形式で入力してください。"
+  },
+  "states": {
+    "loading": "<code>{{trackingNumber}}</code> を検索しています…",
+    "notFound": {
+      "title": "荷物が見つかりません",
+      "body1": "追跡番号 <code>{{trackingNumber}}</code> の荷物は見つかりませんでした。",
+      "body2": "受領書または発送確認の番号と照らし合わせてください。一致しているのに見つからない場合は、サポートにお問い合わせください。お調べいたします。",
+      "contactSupport": "サポートに問い合わせる"
+    },
+    "invalid": {
+      "title": "有効な追跡番号ではありません",
+      "example": "追跡番号は次のような形式です：<code>RDM-7K4P-9X2Q-R</code>。"
+    },
+    "rateLimited": {
+      "title": "検索回数が多すぎます",
+      "body_other": "お客様の荷物情報を守るため、短時間に行える追跡検索の回数を制限しています。約 {{count, number}} 分後に再度お試しください。"
+    },
+    "error": {
+      "title": "現在、追跡情報を読み込めません",
+      "body": "当社側または接続に問題が発生しました。荷物への影響はありません。しばらくしてから再度お試しください。",
+      "retry": "再試行"
+    },
+    "intro": {
+      "title": "追跡番号を入力してください",
+      "body": "追跡番号は <code>RDM</code> で始まり、受領書と発送確認に印字されています。"
+    }
+  },
+  "summary": {
+    "shipment": "荷物",
+    "trackingNumberLabel": "追跡番号",
+    "testData": "<strong>テストデータ：</strong>これは開発用のサンプル荷物であり、実際の配送ではありません。",
+    "deliveredAt": "{{date}} に配達しました。",
+    "route": "ルート",
+    "routeTo": "から",
+    "currentLocation": "現在地",
+    "delivered": "配達日時",
+    "estimatedDelivery": "お届け予定",
+    "mayChange": "変更の可能性あり：配送遅延",
+    "service": "サービス",
+    "lastUpdate": "最終更新",
+    "notAvailable": "未定",
+    "advice": {
+      "DELAYED": "荷物の配送が遅れています。荷物は引き続き輸送中で、進み具合に応じてこのページが更新されます。下記のお届け予定は変更になる場合があります。",
+      "ON_HOLD": "荷物は一時停止中で、配送を再開するには確認が必要です。追跡番号を添えて<support>サポートにお問い合わせ</support>ください。",
+      "DELIVERY_ATTEMPTED": "お届けを試みましたが、完了できませんでした。配達員からの不在票やメッセージをご確認いただくか、<support>サポートにお問い合わせ</support>のうえ再配達をご依頼ください。"
+    }
+  },
+  "history": {
+    "title": "追跡履歴",
+    "count_other": "更新 {{count, number}} 件",
+    "empty": "この荷物の追跡情報はまだ記録されていません。荷物がスキャンされると、ここに表示されます。",
+    "note": "古い順に表示しています。時刻はお使いのタイムゾーン（{{timeZone}}）で表示しています。",
+    "listLabel": "追跡履歴（古い順）",
+    "latest": "最新の更新",
+    "location": "場所："
+  },
+  "journey": {
+    "label": "配送の進み具合",
+    "step": "ステップ {{index, number}}/{{total, number}}：",
+    "state": {
+      "complete": "完了",
+      "current": "現在の段階",
+      "upcoming": "これから"
+    }
+  }
+}

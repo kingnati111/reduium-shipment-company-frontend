@@ -1,0 +1,81 @@
+{
+  "status": {
+    "REGISTERED": {
+      "label": "荷物登録済み",
+      "description": "荷物の情報が登録されました。荷物の到着を待っています。"
+    },
+    "RECEIVED": {
+      "label": "荷物受領",
+      "description": "Reduium が荷物を受け取りました。"
+    },
+    "PROCESSING_AT_ORIGIN": {
+      "label": "発送元施設で処理中",
+      "description": "荷物を仕分けし、発送の準備をしています。"
+    },
+    "IN_TRANSIT": {
+      "label": "輸送中",
+      "description": "荷物は Reduium のネットワーク内を移動中です。"
+    },
+    "ARRIVED_AT_SORTING_FACILITY": {
+      "label": "仕分け施設に到着",
+      "description": "荷物が仕分け施設に到着しました。"
+    },
+    "CUSTOMS_CLEARANCE": {
+      "label": "通関手続き中",
+      "description": "税関当局が荷物を処理しています。"
+    },
+    "DEPARTED_FACILITY": {
+      "label": "施設を出発",
+      "description": "荷物は次の拠点に向けて施設を出発しました。"
+    },
+    "OUT_FOR_DELIVERY": {
+      "label": "配達中",
+      "description": "荷物は配達員の手元にあり、本日お届け予定です。"
+    },
+    "DELIVERED": {
+      "label": "配達完了",
+      "description": "荷物をお届けしました。"
+    },
+    "DELIVERY_ATTEMPTED": {
+      "label": "配達を試行",
+      "description": "配達を試みましたが、完了できませんでした。"
+    },
+    "DELAYED": {
+      "label": "配送遅延",
+      "description": "荷物の配送が遅れています。新しいお届け予定を追ってお知らせします。"
+    },
+    "ON_HOLD": {
+      "label": "保留中",
+      "description": "荷物は保留中です。詳しくはサポートにお問い合わせください。"
+    }
+  },
+  "method": {
+    "EXPRESS": {
+      "label": "速達便",
+      "summary": "書類や小型の荷物を優先的に取り扱い、集荷からお届けまでの経由地を最小限に抑えます。",
+      "bestFor": "書類、サンプル、急ぎのご注文"
+    },
+    "AIR": {
+      "label": "航空貨物",
+      "summary": "国や大陸をまたぐ、急ぎの貨物向けの定期航空便です。",
+      "bestFor": "高額な貨物、納期が重要な貨物"
+    },
+    "OCEAN": {
+      "label": "海上貨物",
+      "summary": "スピードよりもコストを重視する大量の貨物向けの、コンテナ単位または混載の海上輸送です。",
+      "bestFor": "大量の在庫品、重量物・大型品"
+    },
+    "ROAD": {
+      "label": "陸上輸送",
+      "summary": "国内および国境を越えるトラック輸送と、施設から玄関先までの最終区間の配達です。",
+      "bestFor": "地域内配送、パレット"
+    }
+  },
+  "journey": {
+    "registered": "登録済み",
+    "origin": "発送元",
+    "transit": "輸送中",
+    "delivery": "配達中",
+    "delivered": "配達完了"
+  }
+}

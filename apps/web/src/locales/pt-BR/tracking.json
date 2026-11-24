@@ -1,0 +1,87 @@
+{
+  "documentTitle": "Rastrear um pacote | Reduium",
+  "documentTitleWithNumber": "{{trackingNumber}} | Rastreamento | Reduium",
+  "heading": "Rastrear um pacote",
+  "trackAnother": "Rastrear outro envio",
+  "announce": {
+    "looking": "Buscando {{trackingNumber}}",
+    "found": "Envio {{trackingNumber}} encontrado. Status: {{status}}.",
+    "notFound": "Nenhum envio encontrado para {{trackingNumber}}.",
+    "rateLimited": "Consultas demais. Aguarde e tente novamente.",
+    "failed": "Não foi possível carregar o rastreamento."
+  },
+  "form": {
+    "label": "Código de rastreamento",
+    "submit": "Rastrear pacote",
+    "required": "Digite um código de rastreamento.",
+    "invalid": "Isso não parece um código de rastreamento Reduium. Ele deve ter este formato: RDM-XXXX-XXXX-X."
+  },
+  "states": {
+    "loading": "Buscando <code>{{trackingNumber}}</code>…",
+    "notFound": {
+      "title": "Nenhum envio encontrado",
+      "body1": "Não encontramos nenhum envio com o código de rastreamento <code>{{trackingNumber}}</code>.",
+      "body2": "Compare-o com seu recibo ou confirmação de envio. Se estiver igual e mesmo assim não for encontrado, fale com o suporte e vamos verificar.",
+      "contactSupport": "Falar com o suporte"
+    },
+    "invalid": {
+      "title": "Esse não é um código de rastreamento válido",
+      "example": "Os códigos de rastreamento têm este formato: <code>RDM-7K4P-9X2Q-R</code>."
+    },
+    "rateLimited": {
+      "title": "Consultas demais",
+      "body_one": "Para proteger os envios dos nossos clientes, limitamos o número de consultas de rastreamento em pouco tempo. Tente novamente em cerca de {{count, number}} minuto.",
+      "body_many": "Para proteger os envios dos nossos clientes, limitamos o número de consultas de rastreamento em pouco tempo. Tente novamente em cerca de {{count, number}} minutos.",
+      "body_other": "Para proteger os envios dos nossos clientes, limitamos o número de consultas de rastreamento em pouco tempo. Tente novamente em cerca de {{count, number}} minutos."
+    },
+    "error": {
+      "title": "Não conseguimos carregar o rastreamento agora",
+      "body": "Algo deu errado do nosso lado ou com a conexão. Seu envio não foi afetado. Tente novamente em instantes.",
+      "retry": "Tentar novamente"
+    },
+    "intro": {
+      "title": "Digite um código de rastreamento para começar",
+      "body": "Seu código de rastreamento começa com <code>RDM</code> e está impresso no seu recibo e na confirmação de envio."
+    }
+  },
+  "summary": {
+    "shipment": "Envio",
+    "trackingNumberLabel": "Código de rastreamento",
+    "testData": "<strong>Dados de teste.</strong> Este é um envio de exemplo de desenvolvimento, não uma entrega real.",
+    "deliveredAt": "Entregue em {{date}}.",
+    "route": "Rota",
+    "routeTo": "para",
+    "currentLocation": "Local atual",
+    "delivered": "Entregue",
+    "estimatedDelivery": "Previsão de entrega",
+    "mayChange": "Pode mudar: envio atrasado",
+    "service": "Serviço",
+    "lastUpdate": "Última atualização",
+    "notAvailable": "Ainda não disponível",
+    "advice": {
+      "DELAYED": "Seu envio está atrasado. Ele continua a caminho e esta página será atualizada conforme ele avançar. A previsão de entrega abaixo pode mudar.",
+      "ON_HOLD": "Seu envio está parado e precisa de atenção antes de seguir. <support>Fale com o suporte</support> e informe seu código de rastreamento.",
+      "DELIVERY_ATTEMPTED": "Tentamos entregar, mas não foi possível concluir. Procure um aviso ou mensagem do entregador, ou <support>fale com o suporte</support> para agendar uma nova entrega."
+    }
+  },
+  "history": {
+    "title": "Histórico de rastreamento",
+    "count_one": "{{count, number}} atualização",
+    "count_many": "{{count, number}} atualizações",
+    "count_other": "{{count, number}} atualizações",
+    "empty": "Ainda não há atualizações de rastreamento registradas para este envio. Elas aparecem aqui assim que o envio for lido.",
+    "note": "Das mais antigas para as mais recentes. Os horários estão no seu fuso horário ({{timeZone}}).",
+    "listLabel": "Histórico de rastreamento, das mais antigas para as mais recentes",
+    "latest": "Última atualização",
+    "location": "Local:"
+  },
+  "journey": {
+    "label": "Progresso do trajeto",
+    "step": "Etapa {{index, number}} de {{total, number}}:",
+    "state": {
+      "complete": "concluída",
+      "current": "etapa atual",
+      "upcoming": "próxima"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "documentTitle": "Kundenservice | Reduium",
+  "page": {
+    "eyebrow": "Kundenservice",
+    "heading": "Reduium kontaktieren",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "hours": "Erreichbarkeit",
+    "headOffice": "Hauptsitz"
+  },
+  "form": {
+    "title": "Nachricht senden",
+    "requiredNote": "Mit <star>*</star><sr>als Pflichtfeld</sr> markierte Felder sind Pflichtfelder. Ihre Nachricht geht an das Reduium-Kundenserviceteam.",
+    "errorSummary_one": "Bitte korrigieren Sie das markierte Feld unten.",
+    "errorSummary_other": "Bitte korrigieren Sie die {{count, number}} markierten Felder unten.",
+    "fields": {
+      "name": "Ihr Name *",
+      "email": "E-Mail-Adresse *",
+      "emailHint": "Wir verwenden sie, um Ihnen zu antworten.",
+      "phone": "Telefon (optional)",
+      "trackingNumber": "Sendungsnummer (optional)",
+      "trackingNumberHint": "Falls Ihre Nachricht eine Sendung betrifft.",
+      "topic": "Worum geht es? *",
+      "topicPlaceholder": "Bitte auswählen …",
+      "subject": "Betreff *",
+      "message": "Nachricht *",
+      "messageCount": "{{count, number}} von {{max, number}} Zeichen"
+    },
+    "honeypot": "Dieses Feld leer lassen",
+    "privacy": "Wir verwenden diese Angaben nur, um Ihre Nachricht zu beantworten. Sie werden sicher gespeichert und sind nur für Reduium-Mitarbeitende sichtbar. Bestätigungs-E-Mails versenden wir noch nicht: Nach dem Absenden sehen Sie eine Referenz, die Sie aufbewahren sollten.",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet …"
+  },
+  "topics": {
+    "TRACKING": "Eine Frage zur Sendungsverfolgung",
+    "DELIVERY_PROBLEM": "Ein Zustellproblem",
+    "DAMAGED_OR_MISSING": "Ein beschädigter oder fehlender Artikel",
+    "BILLING": "Rechnung",
+    "OTHER": "Etwas anderes"
+  },
+  "errors": {
+    "nameRequired": "Bitte geben Sie Ihren Namen an.",
+    "emailRequired": "Bitte geben Sie Ihre E-Mail-Adresse an.",
+    "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+    "phoneInvalid": "Geben Sie eine gültige Telefonnummer ein, z. B. +44 20 7946 0000.",
+    "trackingNumberInvalid": "Das sieht nicht wie eine Reduium-Sendungsnummer aus. Sie sollte so aussehen: RDM-XXXX-XXXX-X.",
+    "topicRequired": "Wählen Sie aus, worum es in Ihrer Nachricht geht.",
+    "subjectRequired": "Bitte geben Sie einen Betreff an.",
+    "messageTooShort": "Bitte schreiben Sie mindestens 10 Zeichen.",
+    "fieldInvalid": "Bitte prüfen Sie dieses Feld.",
+    "checkForm": "Bitte prüfen Sie das Formular.",
+    "rejected": "Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns per E-Mail oder Telefon.",
+    "rateLimited": "Wir haben in letzter Zeit mehrere Nachrichten von Ihnen erhalten. Bitte warten Sie etwas, bevor Sie eine weitere senden, oder kontaktieren Sie uns per E-Mail oder Telefon.",
+    "unavailable": "Das Kontaktformular ist vorübergehend nicht verfügbar. Bitte kontaktieren Sie uns per E-Mail oder Telefon.",
+    "network": "Wir konnten Ihre Nachricht nicht senden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder kontaktieren Sie uns per E-Mail oder Telefon."
+  },
+  "receipt": {
+    "title": "Nachricht erhalten",
+    "body": "Vielen Dank. Ihre Nachricht wurde für das Reduium-Kundenserviceteam gespeichert. Ihre Referenz lautet:",
+    "copy": "Referenz kopieren",
+    "copied": "Kopiert",
+    "note": "Bitte geben Sie diese Referenz an, wenn Sie uns erneut kontaktieren. Wir senden keine Bestätigungs-E-Mail, notieren Sie sie also. Wir antworten an die angegebene E-Mail-Adresse.",
+    "another": "Weitere Nachricht senden"
+  }
+}

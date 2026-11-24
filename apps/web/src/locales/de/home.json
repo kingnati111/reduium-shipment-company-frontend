@@ -1,0 +1,115 @@
+{
+  "documentTitle": "Reduium Shipment Company | Verfolgen Sie Ihr Paket",
+  "hero": {
+    "eyebrow": "Internationale Paket- und Frachtlogistik",
+    "title": "Jede Sendung <highlight>lückenlos</highlight> erfasst.",
+    "intro": "Reduium befördert Pakete und Fracht über Grenzen hinweg und dokumentiert jede Übergabe unterwegs. Geben Sie Ihre Sendungsnummer ein, um zu sehen, wo sich Ihre Sendung befindet und wie es weitergeht.",
+    "numberHint": "Sendungsnummern beginnen mit <code>RDM</code> und stehen auf Ihrem Beleg und Ihrer Versandbestätigung.",
+    "diagramTitle": "Der Weg einer Sendung",
+    "diagramBadge": "Illustration",
+    "pausePhotos": "Hintergrundfotos anhalten",
+    "playPhotos": "Hintergrundfotos abspielen"
+  },
+  "routeDiagram": {
+    "title": "Illustration: Eine Sendung reist vom Ursprungsort über ein Sortierzentrum und den Zoll zu ihrem Zielort.",
+    "origin": "Ursprung",
+    "sortingHub": "Sortierzentrum",
+    "customs": "Zoll",
+    "destination": "Ziel"
+  },
+  "about": {
+    "eyebrow": "Über Reduium",
+    "title": "Ein Logistikpartner, der den Überblick behält.",
+    "paragraph1": "Reduium Shipment Company befördert Pakete und Fracht für Unternehmen und Privatpersonen – innerhalb der Stadt und über Landesgrenzen hinweg. Abholung, Sortierung, Hauptlauf, Zoll und Zustellung laufen als eine durchgehende Kette.",
+    "paragraph2": "Unser Betrieb beruht auf einer einfachen Idee: Sie sollten jederzeit wissen, wo Ihre Sendung ist, wer sie hat und was als Nächstes passiert. Jede Übergabe wird protokolliert – die Daten, die Sie sehen, sind dieselben, mit denen wir arbeiten.",
+    "badge": "Reduium · Fracht"
+  },
+  "services": {
+    "eyebrow": "Leistungen",
+    "title": "Vier Wege für Ihre Sendung.",
+    "intro": "Wählen Sie nach Dringlichkeit, Größe und Budget. Alle Leistungen laufen über dasselbe verfolgte Netzwerk.",
+    "bestFor": "Ideal für",
+    "includedTitle": "Bei jeder Leistung inklusive",
+    "included": {
+      "oneNumber": "Eine Sendungsnummer von der Abholung bis zur Zustellung",
+      "scans": "Ein Scan bei jeder Ankunft und Abfahrt in einer Einrichtung",
+      "customs": "Zollstatus in Ihrem Sendungsverlauf"
+    }
+  },
+  "why": {
+    "eyebrow": "Warum Reduium",
+    "title": "Rund um lückenlose Dokumentation gebaut.",
+    "intro": "Beim Versand geht es in den Lücken zwischen den Übergaben schief. Wir schließen diese Lücken, indem wir jede Übergabe erfassen und Ihnen zeigen.",
+    "reasons": {
+      "oneNumber": {
+        "title": "Eine Nummer, von Anfang bis Ende",
+        "body": "Ihre Sendung behält dieselbe Reduium-Sendungsnummer von der Registrierung bis zur Zustellung, ganz gleich, mit welcher Leistung sie befördert wird."
+      },
+      "handovers": {
+        "title": "Jede Übergabe protokolliert",
+        "body": "Jeder Scan, jede Ankunft und jede Abfahrt wird zu einem Eintrag mit Zeitstempel und Ort in Ihrem Sendungsverlauf."
+      },
+      "problems": {
+        "title": "Probleme klar benannt",
+        "body": "Verzögert sich eine Sendung, wird sie zurückgehalten oder schlägt ein Zustellversuch fehl, sagt der Status genau das. Kein vages „in Bearbeitung“."
+      },
+      "support": {
+        "title": "Kundenservice mit demselben Blick",
+        "body": "Kontaktieren Sie uns mit Ihrer Sendungsnummer – unser Team arbeitet mit denselben Sendungsdaten, die Sie auf Ihrem Bildschirm sehen."
+      }
+    }
+  },
+  "how": {
+    "eyebrow": "So funktioniert die Verfolgung",
+    "title": "In drei Schritten zum vollständigen Bild.",
+    "steps": {
+      "find": {
+        "title": "Nummer finden",
+        "body": "Sie steht auf Ihrem Beleg und Ihrer Versandbestätigung und sieht so aus: <code>RDM-XXXX-XXXX-X</code>."
+      },
+      "enter": {
+        "title": "Nummer eingeben",
+        "body": "Geben Sie sie in das <link>Feld für die Sendungsnummer</link> ein. Groß- oder Kleinschreibung und Leerzeichen sind kein Problem."
+      },
+      "read": {
+        "title": "Verlauf lesen",
+        "body": "Sehen Sie den aktuellen Status und Standort, das voraussichtliche Lieferdatum und jedes erfasste Ereignis mit Zeit und Ort."
+      }
+    },
+    "statusesTitle": "Was die einzelnen Status bedeuten",
+    "statusesIntro": "Jede Aktualisierung in Ihrem Sendungsverlauf verwendet einen dieser Status.",
+    "normal": "Normaler Verlauf",
+    "attention": "Erfordert Aufmerksamkeit"
+  },
+  "support": {
+    "eyebrow": "Kundenservice",
+    "title": "Fragen zu einer Sendung?",
+    "intro": "Halten Sie Ihre Sendungsnummer bereit. So finden wir Ihre Sendung sofort.",
+    "channels": {
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "hours": "Erreichbarkeit",
+      "headOffice": "Hauptsitz"
+    },
+    "sendMessage": "Nachricht senden",
+    "faqTitle": "Häufige Fragen",
+    "faq": {
+      "findNumber": {
+        "question": "Wo finde ich meine Sendungsnummer?",
+        "answer": "Auf dem Beleg, den Sie bei der Registrierung der Sendung erhalten haben, und in Ihrer Versandbestätigung. Sie beginnt mit RDM."
+      },
+      "notAccepted": {
+        "question": "Warum wird meine Sendungsnummer nicht akzeptiert?",
+        "answer": "Prüfen Sie jedes Zeichen sorgfältig. Reduium-Sendungsnummern enthalten niemals die Buchstaben O, I, L oder U und auch nicht die Ziffern 0 und 1. Eine Nummer mit einem dieser Zeichen wurde also falsch eingegeben."
+      },
+      "delayed": {
+        "question": "Bei meiner Sendung steht „Sendung verzögert“ oder „Zurückgehalten“. Was nun?",
+        "answer": "Öffnen Sie Ihren Sendungsverlauf, um den neuesten Hinweis zu sehen. Wenn Sie mehr wissen möchten, kontaktieren Sie den Kundenservice mit Ihrer Sendungsnummer, und wir prüfen die Sendungsdaten gemeinsam mit Ihnen."
+      },
+      "updates": {
+        "question": "Wie oft wird die Sendungsverfolgung aktualisiert?",
+        "answer": "Bei jedem Scan Ihrer Sendung und bei jeder Statusänderung werden die Daten aktualisiert. Die Änderung erscheint, sobald Sie das nächste Mal nachsehen."
+      }
+    }
+  }
+}

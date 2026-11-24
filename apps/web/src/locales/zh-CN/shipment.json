@@ -1,0 +1,81 @@
+{
+  "status": {
+    "REGISTERED": {
+      "label": "货物已登记",
+      "description": "货物信息已登记，等待收到包裹。"
+    },
+    "RECEIVED": {
+      "label": "包裹已收到",
+      "description": "Reduium 已收到包裹。"
+    },
+    "PROCESSING_AT_ORIGIN": {
+      "label": "始发站点处理中",
+      "description": "包裹正在分拣并准备发运。"
+    },
+    "IN_TRANSIT": {
+      "label": "运输中",
+      "description": "包裹正在 Reduium 网络中运输。"
+    },
+    "ARRIVED_AT_SORTING_FACILITY": {
+      "label": "已到达分拣中心",
+      "description": "包裹已到达分拣中心。"
+    },
+    "CUSTOMS_CLEARANCE": {
+      "label": "清关中",
+      "description": "海关正在处理该包裹。"
+    },
+    "DEPARTED_FACILITY": {
+      "label": "已离开站点",
+      "description": "包裹已离开站点，前往下一站。"
+    },
+    "OUT_FOR_DELIVERY": {
+      "label": "派送中",
+      "description": "包裹已交由快递员，将于今日送达。"
+    },
+    "DELIVERED": {
+      "label": "已成功送达",
+      "description": "包裹已送达。"
+    },
+    "DELIVERY_ATTEMPTED": {
+      "label": "派送未成功",
+      "description": "已尝试派送，但未能完成。"
+    },
+    "DELAYED": {
+      "label": "运输延误",
+      "description": "货物运输延误，稍后将提供新的预计时间。"
+    },
+    "ON_HOLD": {
+      "label": "已暂扣",
+      "description": "货物已被暂扣。详情请联系客户支持。"
+    }
+  },
+  "method": {
+    "EXPRESS": {
+      "label": "快递包裹",
+      "summary": "文件和小件包裹优先处理，从揽收到派送经停最少。",
+      "bestFor": "文件、样品、加急订单"
+    },
+    "AIR": {
+      "label": "航空货运",
+      "summary": "定期航班货运，适合在国家和大洲之间运输的时效性货物。",
+      "bestFor": "高价值或时效要求高的货物"
+    },
+    "OCEAN": {
+      "label": "海运",
+      "summary": "整箱和拼箱海运，适合注重成本胜过速度的大批量货物。",
+      "bestFor": "大宗库存、重货和超大件货物"
+    },
+    "ROAD": {
+      "label": "公路运输",
+      "summary": "国内及跨境卡车运输，以及从站点到门口的末端配送。",
+      "bestFor": "区域配送、托盘货物"
+    }
+  },
+  "journey": {
+    "registered": "已登记",
+    "origin": "始发地",
+    "transit": "运输中",
+    "delivery": "派送中",
+    "delivered": "已送达"
+  }
+}
