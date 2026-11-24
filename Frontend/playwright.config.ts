@@ -1,8 +1,16 @@
+import { resolve } from 'node:path';
 import { defineConfig, devices } from '@playwright/test';
 
+// The API lives in the separate Backend repository. Set REDUIUM_BACKEND_DIR to
+// its folder, or keep it next to this repository as "reduium-backend".
+const backendRepo = process.env.REDUIUM_BACKEND_DIR
+  ? resolve(process.env.REDUIUM_BACKEND_DIR)
+  : resolve(import.meta.dirname, '../../reduium-backend');
+
 /**
- * Browser tests. They start the API and website automatically
- * (or reuse ones already running) and drive a real Chromium browser.
+ * Browser tests. They start the API (from the Backend repository) and the
+ * website automatically (or reuse ones already running) and drive a real
+ * Chromium browser.
  */
 export default defineConfig({
   testDir: './e2e',
@@ -29,11 +37,21 @@ export default defineConfig({
     },
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
   ],
-  webServer: {
-    command: 'npm run dev',
-    cwd: '..',
-    url: 'http://localhost:5173/api/health',
-    reuseExistingServer: true,
-    timeout: 60_000,
-  },
+  webServer: [
+    {
+      command: 'npm run dev',
+      cwd: backendRepo,
+      url: 'http://127.0.0.1:4000/api/health',
+      reuseExistingServer: true,
+      timeout: 60_000,
+    },
+    {
+      // Checked through the website's /api forwarding, so both are ready.
+      command: 'npm run dev',
+      cwd: '..',
+      url: 'http://localhost:5173/api/health',
+      reuseExistingServer: true,
+      timeout: 60_000,
+    },
+  ],
 });

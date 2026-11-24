@@ -2,7 +2,12 @@ import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const apiDir = resolve(import.meta.dirname, '../../Backend');
+// The API lives in the separate Backend repository. Set REDUIUM_BACKEND_DIR to
+// its folder, or keep it next to this repository as "reduium-backend".
+const backendRepo = process.env.REDUIUM_BACKEND_DIR
+  ? resolve(process.env.REDUIUM_BACKEND_DIR)
+  : resolve(import.meta.dirname, '../../../reduium-backend');
+const apiDir = resolve(backendRepo, 'Backend');
 
 /** After the browser tests: switch the test account off and end its sessions. */
 export default function globalTeardown() {

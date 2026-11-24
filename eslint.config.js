@@ -38,7 +38,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['Backend/**/*.ts', 'Shared/**/*.ts', '*.js'],
+    files: ['Shared/**/*.ts', '*.js', 'scripts/*.mjs'],
     languageOptions: { globals: globals.node },
   },
 );

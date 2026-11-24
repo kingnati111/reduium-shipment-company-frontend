@@ -1,32 +1,31 @@
 {
-  "name": "reduium-shipment",
+  "name": "reduium-shipment-frontend",
   "private": true,
-  "description": "Reduium Shipment Company: logistics, package tracking and shipment management platform.",
+  "description": "Reduium Shipment Company: customer website, tracking pages and admin dashboard (React).",
   "type": "module",
   "workspaces": [
     "Frontend",
-    "Backend",
     "Shared"
   ],
   "engines": {
     "node": ">=24.11.0"
   },
   "scripts": {
-    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w @reduium/api\" \"npm run dev -w @reduium/web\"",
-    "dev:web": "npm run dev -w @reduium/web",
-    "dev:api": "npm run dev -w @reduium/api",
-    "build": "npm run build -w @reduium/api && npm run build -w @reduium/web",
+    "dev": "npm run dev -w @reduium/web",
+    "build": "npm run build -w @reduium/web",
+    "preview": "npm run preview -w @reduium/web",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "npm run test --workspaces --if-present",
-    "db:check": "npm run db:check -w @reduium/api",
+    "test:e2e": "npm run test:e2e -w @reduium/web",
+    "test:e2e:preview": "npm run test:e2e:preview -w @reduium/web",
+    "shared:hash": "node scripts/shared-hash.mjs",
     "check": "npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "concurrently": "10.0.7",
     "eslint": "10.15.0",
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-react-refresh": "0.5.8",
@@ -34,10 +33,5 @@
     "prettier": "3.10.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.73.0"
-  },
-  "overrides": {
-    "@prisma/config": {
-      "effect": "3.22.4"
-    }
   }
 }

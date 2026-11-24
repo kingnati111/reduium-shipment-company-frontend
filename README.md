@@ -1,26 +1,40 @@
-# Reduium Shipment Company
+# Reduium Shipment Company: Frontend
 
-Logistics, package tracking and shipment management platform.
+Customer website, package tracking pages and admin dashboard: React 19, Vite and Tailwind CSS 4.
 
-> **Status:** Stage 8 of 9 (security testing and bug fixing). See [Build progress](#build-progress). See [Build progress](#build-progress).
+> **Status:** Stage 8 of 9 (security testing and bug fixing). See [Build progress](#build-progress).
+
+## Repositories
+
+| Repository                          | Contents                                                        |
+| ----------------------------------- | --------------------------------------------------------------- |
+| `reduium-shipment-company-frontend` | Customer website, tracking pages and admin dashboard (React)    |
+| `reduium-shipment-company-backend`  | API, staff authentication, database schema, migrations, scripts |
+
+The website never connects to the database directly. It calls the API at `/api/…`; in development, the website's dev server forwards those calls to the API on `127.0.0.1:4000`.
 
 ## Project layout
 
 ```
-Frontend/   React 19 + Vite + Tailwind CSS 4: customer website, tracking pages and admin dashboard
-Backend/    Node.js + Express 5: API, authentication, database schema, migrations and scripts
-Shared/     Statuses, tracking-number rules, validation, permissions and languages used by both
+Frontend/   React app: pages, components, translations, unit and browser tests
+Shared/     Statuses, tracking-number rules, validation, permissions and languages (also in the Backend repository)
 docs/       Deployment plan and launch checklist
+scripts/    shared-hash.mjs (see "Shared code")
 ```
 
-Each of the three is an npm workspace (`@reduium/web`, `@reduium/api`, `@reduium/shared`); commands from the project root run them, e.g. `npm run dev -w @reduium/api`.
+Both folders are npm workspaces (`@reduium/web`, `@reduium/shared`).
 
-The website never connects to the database directly. Only `Backend` does.
+## Shared code
+
+`Shared/` (statuses, tracking-number rules, validation schemas, permissions and the list of languages) is used by both the website and the API, so an **identical copy** lives in both repositories.
+
+- Change it in one repository, then make exactly the same change in the Backend repository.
+- `npm run shared:hash` prints a fingerprint of `Shared/`. The two repositories must print the same value.
 
 ## Requirements
 
 - Node.js 24 LTS or newer
-- A Neon account, with a project named `reduium-shipment` and a `dev` branch
+- For a working site locally and for the full browser tests: the Backend repository, with its `Backend/.env` set up (see its README). Keep it next to this repository in a folder named `reduium-backend`, or set `REDUIUM_BACKEND_DIR` to its folder.
 
 ## First-time setup
 
@@ -28,99 +42,19 @@ The website never connects to the database directly. Only `Backend` does.
 npm install
 ```
 
-### Connect the database (Neon)
-
-1. In the Neon console, open the **reduium-shipment** project → **Connect** → select the **dev** branch.
-2. Open `Backend/.env` in your editor. It was created from `.env.example`.
-3. Paste the **pooled** string (host contains `-pooler`) into `DATABASE_URL`.
-4. Turn off "Connection pooling" in Neon's Connect dialog and paste that **direct** string into `DIRECT_URL`.
-5. Keep the double quotes around each value and make sure both end with `sslmode=verify-full` (encrypted, with the server certificate verified).
-6. Verify:
-
-   ```bash
-   npm run db:check
-   ```
-
-   The check never prints your credentials. It reports pass/fail checks, the database name, the PostgreSQL version, the Neon project/branch/endpoint IDs (identifiers, not secrets) and which migrations are applied.
-
-7. Create the tables, then (optionally) add sample data and your first admin account:
-
-   ```bash
-   npm run db:migrate:deploy -w @reduium/api
-   npm run db:seed -w @reduium/api          # optional: 3 sample shipments, all labelled TEST DATA
-   npm run admin:create -w @reduium/api     # asks for name, email and a password (visible as you type)
-   ```
-
-**Never** paste connection strings into chat, issues, frontend code or any committed file. `.env` is git-ignored. If a string leaks, reset the role password in Neon (**Roles → Reset password**).
-
-## Database
-
-PostgreSQL on Neon, managed with [Prisma](https://www.prisma.io) 7.10.1. The schema lives in [`Backend/prisma/schema.prisma`](Backend/prisma/schema.prisma) and every change to it goes through a migration in [`Backend/prisma/migrations/`](Backend/prisma/migrations/).
-
-| Table                        | Holds                                                                                                                                                     |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `admins`                     | Staff accounts: name, unique email, Argon2id password hash, role (`ADMIN` or `OPERATOR`), status (`ACTIVE`/`DISABLED`), login-throttling fields           |
-| `sessions`                   | Server-side login sessions. Stores a SHA-256 hash of the cookie token, never the token itself. Expires after 12 h, or 2 h idle                            |
-| `shipments`                  | One row per shipment: unique tracking number, status, method, sender and recipient (private), city-level origin/destination (public), current location    |
-| `tracking_events`            | A shipment's history: status, location, description and when it happened. Many per shipment, always read in chronological order                           |
-| `support_requests`           | Messages from the contact form: customer reference (`SUP-XXXX-XXXX`), topic, status, priority, assignee, and when it was resolved, closed and last active |
-| `support_request_activities` | A support request's timeline: internal notes, recorded replies, and status/priority/assignee changes. Append-only                                         |
-| `audit_logs`                 | Append-only record of staff actions: who, what, which record, when, and the changed fields (personal data redacted)                                       |
-
-**Rules the database enforces itself**, so a bug in the app can't store bad data:
-
-- Tracking numbers must be unique and match `RDM-XXXX-XXXX-C`.
-- Country codes must be 2 upper-case letters.
-- A delivered shipment must have a delivery time.
-- Admin emails must be lower-case, so `A@x.com` and `a@x.com` can't both exist.
-- Password hashes must be Argon2id.
-- The audit log rejects edits and deletions.
-- Support references must be unique and match `SUP-XXXX-XXXX`. A Resolved request must have a resolved time, and a Closed one a closed time.
-- Each support timeline entry carries exactly the fields of its kind (a note is never a reply or a status change), with real status and priority values only. The timeline rejects edits, and deletions except when an administrator deletes the whole request.
-- Admins who have done anything can't be deleted, only disabled. That keeps the audit trail intact.
-
-**Public vs private.** Public tracking reads only an explicit allow-list of columns (see [`Backend/src/services/tracking.ts`](Backend/src/services/tracking.ts)): status, method, origin and destination cities, current location, dates, and the event history. Names, companies, emails, phone numbers, street addresses, package contents, notes and staff details are never fetched for it.
-
-**Connections and TLS.**
-
-- **The running app** uses the pooled `DATABASE_URL` through node-postgres, with `sslmode=verify-full`.
-- **Migrations** use the direct `DIRECT_URL`. Prisma's migration engine silently ignores `verify-full`. Tested with 7.10.1: it connected to a server whose certificate didn't match. So [`prisma.config.ts`](Backend/prisma.config.ts) translates the URL to the engine's own strict mode (`sslmode=require&sslaccept=strict`), and it refuses any URL that doesn't ask for verification.
-- **Tests:** a live test proves that both clients reject a mismatched certificate.
-
-**Migrations are all-or-nothing (tested, not assumed).** Prisma 7.10.1 sends each migration file to PostgreSQL as one request, which PostgreSQL runs as a single transaction. In a throwaway schema, a deliberate failure at the very end of the Stage 7 migration left nothing behind, and Prisma recorded the real error. Migration files therefore do **not** add their own `BEGIN`/`COMMIT`: tested the same way, that changed nothing about safety but hid the real error behind "current transaction is aborted". After a failed migration, Prisma refuses further deploys until you fix the cause and run `npx prisma migrate resolve --rolled-back <migration name>` in `Backend`.
-
-### Database commands (run from the project root)
-
-| Command                                     | What it does                                                                                        |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `npm run db:check`                          | Connection check (never prints secrets)                                                             |
-| `npm run db:migrate:status -w @reduium/api` | Which migrations are applied                                                                        |
-| `npm run db:migrate:deploy -w @reduium/api` | Apply pending migrations                                                                            |
-| `npm run db:migrate:dev -w @reduium/api`    | Create a new migration after editing the schema (development only)                                  |
-| `npm run db:seed -w @reduium/api`           | Add sample data, flagged as test data. Does nothing if it's already there. Never runs in production |
-| `npm run admin:create -w @reduium/api`      | Create an admin account. There is no default admin or built-in password                             |
-
-### How the database tests stay away from real data
-
-`npm test` runs the database tests inside a separate schema, `reduium_test`, in the same dev database:
-
-1. Before each run, that schema is dropped and rebuilt from the migrations.
-2. Tables are emptied between tests.
-3. The real tables in `public` are never read or written by tests.
-
-If `Backend/.env` is missing, the database tests are skipped with a warning.
-
 ## Everyday commands
 
-| Command                            | What it does                                                |
-| ---------------------------------- | ----------------------------------------------------------- |
-| `npm run dev`                      | Starts the API (port 4000) and website (port 5173) together |
-| `npm run typecheck`                | TypeScript checks for all packages                          |
-| `npm run lint`                     | Code-quality checks                                         |
-| `npm test`                         | API, database and shared-logic tests (needs `Backend/.env`) |
-| `npm run test:e2e -w @reduium/web` | Browser tests (desktop and mobile)                          |
-| `npm run build`                    | Production builds of the API and website                    |
-| `npm run check`                    | Type-check, lint, test and build in one go                  |
+| Command                    | What it does                                                                                                   |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`              | Starts the website on port 5173. Start the API first (`npm run dev` in the Backend repository) so `/api` works |
+| `npm run typecheck`        | TypeScript checks                                                                                              |
+| `npm run lint`             | Code-quality checks                                                                                            |
+| `npm test`                 | Website and shared-logic unit tests                                                                            |
+| `npm run test:e2e`         | Browser tests (desktop, tablet and mobile). Starts the API from the Backend repository                         |
+| `npm run test:e2e:preview` | Builds the site and tests it under the production security headers                                             |
+| `npm run build`            | Production build of the website (`Frontend/dist`)                                                              |
+| `npm run check`            | Type-check, lint, test and build in one go                                                                     |
+| `npm run shared:hash`      | Fingerprint of `Shared/` (must match the Backend repository)                                                   |
 
 Open http://localhost:5173 while `npm run dev` is running.
 
@@ -148,124 +82,17 @@ Anything a shipment doesn't have yet is shown as **Not available yet**, never in
 
 Every outcome has its own screen: loading, found, no shipment found, invalid number, too many lookups, and a "couldn't load" error with a working **Try again** button. **Track another shipment** returns to the search box.
 
-**Try it locally** with the sample shipments from `npm run db:seed -w @reduium/api`. The seed prints their tracking numbers; in the current dev database they are:
+**Try it locally** with the sample shipments from `npm run db:seed -w @reduium/api` (in the Backend repository). The seed prints their tracking numbers; in the current dev database they are:
 
 - `RDM-46EH-YBRW-8` (delivered)
 - `RDM-VGYD-H7Q5-V` (at customs)
 - `RDM-PFBP-R2CQ-B` (delayed)
 
-### Tracking API
-
-`GET /api/tracking/:trackingNumber`. Loose input such as `rdm 7k4p 9x2q r` is accepted and normalised.
-
-| Status | Body                                                                                             | When                                                      |
-| ------ | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------- |
-| 200    | `{ "shipment": PublicTrackingResult }`                                                           | Found                                                     |
-| 400    | `{ "error": { "code": "INVALID_TRACKING_NUMBER", "message": … } }`                               | Wrong format or check character (no database lookup)      |
-| 404    | `{ "error": { "code": "SHIPMENT_NOT_FOUND", "message": … } }`                                    | Valid number, no such shipment                            |
-| 429    | `{ "error": { "code": "RATE_LIMITED", "details": { "retryAfterSeconds": n } } }` + `Retry-After` | Too many lookups                                          |
-| 500    | `{ "error": { "code": "INTERNAL_ERROR", … } }`                                                   | Unexpected failure (generic message, no internal details) |
-
-`PublicTrackingResult` is defined in [`Shared/src/public-tracking.ts`](Shared/src/public-tracking.ts). It contains the tracking number, status, method, origin and destination city and country, current location, estimated delivery date, delivery time, last update, test-data flag, and the event history (status, location, description, time).
-
-Sender and recipient names, companies, emails, phone numbers, street addresses, package contents, weight, notes, staff names and database IDs are **never** included. They aren't even read from the database for this endpoint.
-
-Responses are sent with `Cache-Control: no-store` and `X-Robots-Tag: noindex`.
-
-**Rate limits, per visitor IP:**
-
-- **60 lookups per minute.** This stops floods and scraping.
-- **20 failed lookups per 15 minutes.** Only invalid or unknown numbers count. This stops anyone guessing tracking numbers, without affecting customers who look up real shipments. Server errors never count against a visitor.
-
-Limits are kept in the API's memory, which is right for a single server. If the API is ever run on several servers, they need a shared store (e.g. Redis). This is noted for Stage 9.
-
-## Staff sign-in and admin security
-
-### Create the first administrator
-
-There is no default account and no built-in password. Create one in a terminal:
-
-```bash
-npm run admin:create -w @reduium/api
-```
-
-It asks for your name, email and a password. The password is **visible as you type it** and asked twice. It must be at least 6 characters. Because it stays on screen, clear the terminal afterwards (`cls` on Windows, `clear` on Mac/Linux) if anyone else can see it. Only an Argon2id hash is stored. While there is no active Administrator, the new account is always made an **Administrator** (disabled accounts and Operators, like the browser-test account, do not count); after that you choose Administrator or Operator. Then sign in at http://localhost:5173/admin/login.
-
-### Roles
-
-| Permission                                     | Administrator | Operator |
-| ---------------------------------------------- | :-----------: | :------: |
-| View, create and update shipments and tracking |       ✓       |    ✓     |
-| Archive and restore shipments                  |       ✓       |    ✓     |
-| Permanently delete archived shipments          |       ✓       |          |
-| Read and handle support requests               |       ✓       |    ✓     |
-| Permanently delete closed support requests     |       ✓       |          |
-| View and manage staff accounts, read audit log |       ✓       |          |
-
-The map lives in [`Shared/src/permissions.ts`](Shared/src/permissions.ts). **The API enforces it on every request.** The website uses the same map only to decide what to show.
-
-### Endpoints
-
-| Endpoint                | What it does                                                                                   |
-| ----------------------- | ---------------------------------------------------------------------------------------------- |
-| `POST /api/auth/login`  | `{ email, password }` → sets the session cookie, returns the admin, permissions and CSRF token |
-| `GET /api/auth/session` | Who is signed in (401 if nobody). Also refreshes the idle timer                                |
-| `POST /api/auth/logout` | Ends the session on the server and clears the cookie (needs the CSRF token)                    |
-| `GET /api/admin/admins` | Staff accounts. Administrators only (Operators get 403)                                        |
-
-Everything under `/api/admin` automatically requires:
-
-- a valid session (otherwise 401);
-- the CSRF token on every POST, PUT, PATCH or DELETE (otherwise 403);
-- the endpoint's own permission (otherwise 403).
-
-### How it's protected
-
-- **Passwords:**
-  - Verified with Argon2id and never stored, returned or logged.
-  - Hashes made with older, weaker settings are upgraded automatically at the next sign-in.
-- **Sessions:**
-  - A random 256-bit token in a cookie. The database stores only its SHA-256 hash.
-  - Sessions end after 12 hours, or after 2 hours without activity.
-  - Disabling an account or changing its password ends its sessions immediately.
-  - Every sign-in creates a brand-new session and destroys any previous one (prevents session fixation).
-- **Cookie:**
-  - `HttpOnly` (scripts can't read it) and `SameSite=Strict`.
-  - In production it is also `Secure` and named `__Host-reduium_session`, so it's HTTPS-only and locked to this exact site.
-- **CSRF:** three layers.
-  1. The SameSite cookie.
-  2. An **Origin check**: state-changing requests must come from `WEB_ORIGIN`.
-  3. A **CSRF token**, derived from the session token, sent in the `X-CSRF-Token` header.
-- **Brute force:**
-  - At most 10 failed sign-ins per 15 minutes per IP address, and 30 attempts of any kind.
-  - Each account pauses for 15 minutes after every 5 wrong passwords in a row.
-- **No account enumeration:**
-  - Wrong password, unknown email, paused account and disabled account all get the **same** message.
-  - Unknown emails still run a full Argon2 check against a dummy hash, so response time gives nothing away.
-- **Audit log:**
-  - Every sign-in, failed attempt (with its reason) and sign-out is recorded, with IP address and browser.
-  - Emails typed for unknown accounts are **not** recorded, since they're often someone's mistyped real address.
-- **Open redirects blocked:** after sign-in, the site returns only to pages inside `/admin`.
-
-**Two-factor sign-in (authenticator app): deferred.** Staff sign in with email and password only. Adding a second step with an authenticator app was considered and is **deferred: not currently approved for implementation**. No two-factor code, dependency or database field exists, and the sign-in system is unchanged. All the protections above stay in force. If it's approved later, it would be added as an extra step after the password check, without weakening any of them.
-
-### Browser-test account
-
-The browser tests sign in for real with one dedicated account, `e2e-browser-tests@example.invalid`. It's an Operator, the least-privileged role.
-
-- Each test run gives it a new random password that exists only in that run's memory.
-- After the run, it's **disabled** and its sessions are deleted.
-- Each switch on or off is audit-logged.
-- Support requests sent by the browser tests use `e2e.support.<anything>@example.invalid`. They are deleted (and audit-logged by reference only) when the account is switched on and off. Nothing else is touched.
-- `E2E_NO_DB=1` runs the browser tests without the test account, so nothing is written to the database: the real sign-in tests are skipped (public tracking tests still read the sample shipments).
-
-See [`Backend/scripts/e2e-account.ts`](Backend/scripts/e2e-account.ts).
-
-## Shipment management (admin)
+## Admin dashboard
 
 Sign in at `/admin/login`.
 
-### Screens
+### Shipment screens
 
 - **Overview (`/admin`):**
   - Live figures: shipments in progress, needing attention (delayed, on hold, delivery attempted), overdue (past the estimated date) and delivered in the last 7 days. Each figure links to the matching list.
@@ -282,44 +109,7 @@ Sign in at `/admin/login`.
   - Edit details, archive or restore, and open the public tracking page.
   - Administrators also see the shipment's activity log and can delete permanently.
 
-### Rules that keep the data trustworthy
-
-- **Status and location only change through tracking updates.** The current status is always the newest update by event time, so the history and the public page can never disagree. Editing or deleting an update recalculates it, and a shipment always keeps at least one update.
-- **No lost edits:** if someone else changed a shipment after you opened its edit form, your save is refused with a "load the latest version" button instead of overwriting their work.
-- **Archived shipments** are hidden from the active lists and read-only, but customers can still track them, and they can be restored.
-- **Permanent deletion** needs the Administrator role, an archived shipment, and the tracking number typed as confirmation.
-- **Audit log:** every change is recorded (who, what, when, which fields). Customers' personal details are recorded as `[redacted]`.
-
-### Admin shipment API (all under `/api/admin/shipments`; session + CSRF token required)
-
-| Method and path                   | Permission         | What it does                                                                  |
-| --------------------------------- | ------------------ | ----------------------------------------------------------------------------- |
-| `GET /`                           | `shipments:read`   | List and search (`q`, `view`, `status`, `method`, `sort`, `page`, `pageSize`) |
-| `GET /stats`                      | `shipments:read`   | Dashboard figures                                                             |
-| `POST /`                          | `shipments:write`  | Create a shipment                                                             |
-| `GET /:id`                        | `shipments:read`   | Full details and history                                                      |
-| `PUT /:id`                        | `shipments:write`  | Save edits (needs `expectedUpdatedAt`; 409 if stale)                          |
-| `POST /:id/events`                | `shipments:write`  | Add a tracking update                                                         |
-| `PUT /:id/events/:eventId`        | `shipments:write`  | Correct a tracking update                                                     |
-| `DELETE /:id/events/:eventId`     | `shipments:write`  | Remove a tracking update                                                      |
-| `POST /:id/archive`, `/unarchive` | `shipments:write`  | Archive or restore                                                            |
-| `DELETE /:id`                     | `shipments:delete` | Permanently delete (archived only, `{ confirmTrackingNumber }`)               |
-| `GET /:id/activity`               | `audit:read`       | The shipment's audit trail                                                    |
-
-Shipments created by the browser tests are deleted automatically after each test run. Only shipments created by the test account are touched.
-
-## Customer support
-
-### For customers (`/support`)
-
-A contact form: name, email, optional phone, optional tracking number, topic, subject and message.
-
-- Missing or invalid fields are explained next to the field, and focus moves to the first problem.
-- After sending, the customer sees a reference such as `SUP-7K3M-QX9P` to quote later. **No confirmation email is sent**, and the page says so.
-- The tracking number is checked for format only. The answer is the same whether or not the shipment exists, so the form can't be used to discover real tracking numbers.
-- Spam protection: a hidden "spam trap" field (a filled-in one is refused with an honest error, never a fake success), and per-IP limits: 30 attempts per 15 minutes, and 5 accepted messages per hour and 20 per day (typing mistakes don't count).
-
-### For staff
+### Support screens
 
 - **Overview (`/admin`):** open, new, unassigned, assigned-to-me and waiting-on-customer counts, and the oldest open requests.
 - **Inbox (`/admin/support`):**
@@ -332,51 +122,30 @@ A contact form: name, email, optional phone, optional tracking number, topic, su
   - **record a reply**, then send it with **Open in my email** or **Copy reply text**. Reduium does not send email: recorded replies are labelled "not sent by Reduium" everywhere;
   - as administrators, see the audit log and permanently delete a **Closed** request after typing its reference.
 
-### Statuses
+### Roles
 
-| Status              | Meaning                                                           |
-| ------------------- | ----------------------------------------------------------------- |
-| New                 | Nobody has picked it up yet                                       |
-| In progress         | Someone is working on it                                          |
-| Waiting on customer | We replied and need more from the customer                        |
-| Resolved            | Answered or fixed; can be reopened                                |
-| Closed              | Finished; read-only (no notes, replies or changes) until reopened |
+Administrators and Operators see different parts of the dashboard. The permission map is in [`Shared/src/permissions.ts`](Shared/src/permissions.ts). **The API enforces it on every request;** the website uses the same map only to decide what to show.
 
-Priority is Normal or Urgent. Requests can be assigned to any active staff member who handles support. A request whose assignee is later disabled shows "assignee disabled" and appears under Unassigned.
+## Customer support form
 
-### Rules
+A contact form: name, email, optional phone, optional tracking number, topic, subject and message.
 
-- **Notes and replies never mix:** they are different entry types, enforced by the database.
-- **The timeline is append-only:** mistakes are corrected with a new entry.
-- **No lost changes:** a change is refused (with "Load the latest version") if someone else changed the request after you opened it.
-- **Audit log:** every staff action is recorded. Customer details and note or reply text are not copied into it.
-- Customer submissions themselves are not audit-logged; the request is the record.
+- Missing or invalid fields are explained next to the field, and focus moves to the first problem.
+- After sending, the customer sees a reference such as `SUP-7K3M-QX9P` to quote later. **No confirmation email is sent**, and the page says so.
+- The tracking number is checked for format only. The answer is the same whether or not the shipment exists, so the form can't be used to discover real tracking numbers.
+- Spam protection: a hidden "spam trap" field (a filled-in one is refused with an honest error, never a fake success), and per-IP limits: 30 attempts per 15 minutes, and 5 accepted messages per hour and 20 per day (typing mistakes don't count).
 
-### Public support API
+## Browser-test account
 
-| Method and path     | What it does                                                                |
-| ------------------- | --------------------------------------------------------------------------- |
-| `POST /api/support` | Save a contact-form message. Returns only `{ reference, receivedAt }` (201) |
+The browser tests sign in for real with one dedicated account, `e2e-browser-tests@example.invalid`. It's an Operator, the least-privileged role.
 
-### Admin support API (all under `/api/admin/support`; session + CSRF token required)
+- Each test run gives it a new random password that exists only in that run's memory.
+- After the run, it's **disabled** and its sessions are deleted.
+- Each switch on or off is audit-logged.
+- Support requests sent by the browser tests use `e2e.support.<anything>@example.invalid`. They are deleted (and audit-logged by reference only) when the account is switched on and off. Nothing else is touched.
+- `E2E_NO_DB=1` runs the browser tests without the test account, so nothing is written to the database: the real sign-in tests are skipped (public tracking tests still read the sample shipments).
 
-| Method and path     | Permission       | What it does                                                                    |
-| ------------------- | ---------------- | ------------------------------------------------------------------------------- |
-| `GET /`             | `support:read`   | Inbox (`q`, `view`, `status`, `topic`, `priority`, `sort`, `page`, `pageSize`)  |
-| `GET /stats`        | `support:read`   | Dashboard figures                                                               |
-| `GET /assignees`    | `support:read`   | Staff who can be assigned                                                       |
-| `GET /:id`          | `support:read`   | Full request and timeline                                                       |
-| `PATCH /:id`        | `support:write`  | Status, priority and/or assignee (needs `expectedUpdatedAt`; 409 if stale)      |
-| `POST /:id/notes`   | `support:write`  | Add an internal note                                                            |
-| `POST /:id/replies` | `support:write`  | Record a reply sent from your own email (`markWaiting` optional). Sends nothing |
-| `DELETE /:id`       | `support:delete` | Permanently delete (Closed only, `{ confirmReference }`)                        |
-| `GET /:id/activity` | `audit:read`     | The request's audit trail                                                       |
-
-### Not included yet
-
-- **Email:** Reduium sends no email (no confirmation to customers, no replies, no staff alerts). That needs an email provider, a verified sending domain and an API key.
-- **CAPTCHA:** not added. The spam trap and rate limits stop casual spam only.
-- **Attachments**, and **automatic deletion after a retention period**, are not built.
+The account is switched on and off by `Backend/scripts/e2e-account.ts` in the Backend repository.
 
 ## Languages (localization)
 
@@ -466,27 +235,11 @@ The brand font (Archivo, self-hosted) covers Latin letters only. For Arabic, Heb
 - [x] **Milestone 3:** right-to-left layout for Arabic
 - [x] **Milestone 4:** draft translations for the seven other launch languages, fonts for Arabic/Chinese/Japanese, layout checked in every language
 
-## Security review (Stage 8)
+## Security headers
 
-An audit of the whole application (code, every admin route, dependencies, secrets, the built website, and the running app probed from outside) found **no critical or high-severity vulnerabilities**. Four medium/low issues were fixed, each with regression tests:
+Website pages send security headers, defined in [`Frontend/security-headers.ts`](Frontend/security-headers.ts): frame blocking (against clickjacking), `nosniff`, and referrer and permissions policies everywhere, plus a strict Content-Security-Policy (only the site's own scripts, styles, fonts and images) for the production build. The API sets its own headers; see the Backend repository.
 
-| Issue                                                                                                                                                   | Severity | Fix                                                                                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Website pages sent no security headers: admin pages could be shown inside another site's frame (clickjacking), and there was no Content-Security-Policy | Medium   | [`Frontend/security-headers.ts`](Frontend/security-headers.ts): frame blocking, `nosniff`, referrer and permissions policies everywhere; a strict CSP (only the site's own scripts, styles, fonts and images) for the production build |
-| The development API listened on every network interface, so other devices on the same Wi-Fi could reach it                                              | Medium   | Listens on `127.0.0.1` outside production (`HOST` setting)                                                                                                                                                                             |
-| A forgotten `NODE_ENV=production` at deployment would silently drop the Secure/`__Host-` cookie                                                         | Medium   | The API refuses to start with a non-localhost `WEB_ORIGIN` outside production, or without `https://` in production                                                                                                                     |
-| Sign-in timing could reveal which staff emails exist (a wrong password made one more database round trip than an unknown email)                         | Low      | Every failed sign-in now makes the same database calls                                                                                                                                                                                 |
-
-**Checked and found sound:** no known vulnerable dependencies (`npm audit`); no secrets in the code or the built website; no raw SQL; no HTML injection points; every admin endpoint refuses visitors without a session (401) and Operators where it's administrator-only (403); cross-site requests, form-style login posts, malformed, oversized and wrongly typed input, path traversal and injection-style values are all rejected without revealing internals; spoofed IP headers don't bypass rate limits.
-
-**Accepted risks (documented, not fixed):**
-
-- Anyone who knows a staff email can trigger that account's 15-minute sign-in pause by entering wrong passwords. This is the standard trade-off of account lockout; the per-IP limits slow it down. Revisit if it's ever abused.
-- Rate-limit counters live in the server's memory (fine for one server; Stage 9 if there are several).
-- `trust proxy` is set to one proxy hop in production: correct behind a single load balancer, which Stage 9 must confirm for the chosen host.
-- **No two-factor sign-in for staff (deferred by decision).** A stolen or guessed staff password is enough to sign in. This is limited by Argon2id password hashing, sign-in rate limits and account pauses, short sessions, administrator/operator permissions and the audit log. Authenticator-app two-factor sign-in is not currently approved for implementation; revisit before granting more people admin access, or if any staff password is suspected compromised.
-
-**Production build test.** `npm run test:e2e:preview -w @reduium/web` builds the site, serves it with the production headers, and fails if the browser blocks anything under the strict policy (desktop and mobile). The production host (Stage 9) must send the same headers as `productionSecurityHeaders()`.
+**Production build test.** `npm run test:e2e:preview` builds the site, serves it with the production headers, and fails if the browser blocks anything under the strict policy (desktop and mobile). The production host (Stage 9) must send the same headers as `productionSecurityHeaders()`.
 
 ## Before launch: placeholder checklist
 
