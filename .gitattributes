@@ -1,0 +1,25 @@
+# Consistent line endings on every operating system.
+# Text files are stored and checked out with LF (Unix) line endings, matching
+# Prettier and .editorconfig, so a fresh checkout on Windows still passes the
+# formatting checks.
+* text=auto eol=lf
+
+# Windows-only scripts keep Windows line endings.
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# Binary files: never convert or diff as text.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+*.zip   binary
