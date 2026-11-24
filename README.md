@@ -7,14 +7,15 @@ Logistics, package tracking and shipment management platform.
 ## Project layout
 
 ```
-apps/
-  web/        React 19 + Vite + Tailwind CSS 4: public website and admin dashboard
-  api/        Node.js + Express 5: backend API (talks to the database)
-packages/
-  shared/     Statuses and tracking-number rules used by both apps
+Frontend/   React 19 + Vite + Tailwind CSS 4: customer website, tracking pages and admin dashboard
+Backend/    Node.js + Express 5: API, authentication, database schema, migrations and scripts
+Shared/     Statuses, tracking-number rules, validation, permissions and languages used by both
+docs/       Deployment plan and launch checklist
 ```
 
-The website never connects to the database directly. Only `apps/api` does.
+Each of the three is an npm workspace (`@reduium/web`, `@reduium/api`, `@reduium/shared`); commands from the project root run them, e.g. `npm run dev -w @reduium/api`.
+
+The website never connects to the database directly. Only `Backend` does.
 
 ## Requirements
 
@@ -30,7 +31,7 @@ npm install
 ### Connect the database (Neon)
 
 1. In the Neon console, open the **reduium-shipment** project → **Connect** → select the **dev** branch.
-2. Open `apps/api/.env` in your editor. It was created from `.env.example`.
+2. Open `Backend/.env` in your editor. It was created from `.env.example`.
 3. Paste the **pooled** string (host contains `-pooler`) into `DATABASE_URL`.
 4. Turn off "Connection pooling" in Neon's Connect dialog and paste that **direct** string into `DIRECT_URL`.
 5. Keep the double quotes around each value and make sure both end with `sslmode=verify-full` (encrypted, with the server certificate verified).
@@ -54,7 +55,7 @@ npm install
 
 ## Database
 
-PostgreSQL on Neon, managed with [Prisma](https://www.prisma.io) 7.10.1. The schema lives in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma) and every change to it goes through a migration in [`apps/api/prisma/migrations/`](apps/api/prisma/migrations/).
+PostgreSQL on Neon, managed with [Prisma](https://www.prisma.io) 7.10.1. The schema lives in [`Backend/prisma/schema.prisma`](Backend/prisma/schema.prisma) and every change to it goes through a migration in [`Backend/prisma/migrations/`](Backend/prisma/migrations/).
 
 | Table                        | Holds                                                                                                                                                     |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -78,15 +79,15 @@ PostgreSQL on Neon, managed with [Prisma](https://www.prisma.io) 7.10.1. The sch
 - Each support timeline entry carries exactly the fields of its kind (a note is never a reply or a status change), with real status and priority values only. The timeline rejects edits, and deletions except when an administrator deletes the whole request.
 - Admins who have done anything can't be deleted, only disabled. That keeps the audit trail intact.
 
-**Public vs private.** Public tracking reads only an explicit allow-list of columns (see [`apps/api/src/services/tracking.ts`](apps/api/src/services/tracking.ts)): status, method, origin and destination cities, current location, dates, and the event history. Names, companies, emails, phone numbers, street addresses, package contents, notes and staff details are never fetched for it.
+**Public vs private.** Public tracking reads only an explicit allow-list of columns (see [`Backend/src/services/tracking.ts`](Backend/src/services/tracking.ts)): status, method, origin and destination cities, current location, dates, and the event history. Names, companies, emails, phone numbers, street addresses, package contents, notes and staff details are never fetched for it.
 
 **Connections and TLS.**
 
 - **The running app** uses the pooled `DATABASE_URL` through node-postgres, with `sslmode=verify-full`.
-- **Migrations** use the direct `DIRECT_URL`. Prisma's migration engine silently ignores `verify-full`. Tested with 7.10.1: it connected to a server whose certificate didn't match. So [`prisma.config.ts`](apps/api/prisma.config.ts) translates the URL to the engine's own strict mode (`sslmode=require&sslaccept=strict`), and it refuses any URL that doesn't ask for verification.
+- **Migrations** use the direct `DIRECT_URL`. Prisma's migration engine silently ignores `verify-full`. Tested with 7.10.1: it connected to a server whose certificate didn't match. So [`prisma.config.ts`](Backend/prisma.config.ts) translates the URL to the engine's own strict mode (`sslmode=require&sslaccept=strict`), and it refuses any URL that doesn't ask for verification.
 - **Tests:** a live test proves that both clients reject a mismatched certificate.
 
-**Migrations are all-or-nothing (tested, not assumed).** Prisma 7.10.1 sends each migration file to PostgreSQL as one request, which PostgreSQL runs as a single transaction. In a throwaway schema, a deliberate failure at the very end of the Stage 7 migration left nothing behind, and Prisma recorded the real error. Migration files therefore do **not** add their own `BEGIN`/`COMMIT`: tested the same way, that changed nothing about safety but hid the real error behind "current transaction is aborted". After a failed migration, Prisma refuses further deploys until you fix the cause and run `npx prisma migrate resolve --rolled-back <migration name>` in `apps/api`.
+**Migrations are all-or-nothing (tested, not assumed).** Prisma 7.10.1 sends each migration file to PostgreSQL as one request, which PostgreSQL runs as a single transaction. In a throwaway schema, a deliberate failure at the very end of the Stage 7 migration left nothing behind, and Prisma recorded the real error. Migration files therefore do **not** add their own `BEGIN`/`COMMIT`: tested the same way, that changed nothing about safety but hid the real error behind "current transaction is aborted". After a failed migration, Prisma refuses further deploys until you fix the cause and run `npx prisma migrate resolve --rolled-back <migration name>` in `Backend`.
 
 ### Database commands (run from the project root)
 
@@ -107,19 +108,19 @@ PostgreSQL on Neon, managed with [Prisma](https://www.prisma.io) 7.10.1. The sch
 2. Tables are emptied between tests.
 3. The real tables in `public` are never read or written by tests.
 
-If `apps/api/.env` is missing, the database tests are skipped with a warning.
+If `Backend/.env` is missing, the database tests are skipped with a warning.
 
 ## Everyday commands
 
-| Command                            | What it does                                                 |
-| ---------------------------------- | ------------------------------------------------------------ |
-| `npm run dev`                      | Starts the API (port 4000) and website (port 5173) together  |
-| `npm run typecheck`                | TypeScript checks for all packages                           |
-| `npm run lint`                     | Code-quality checks                                          |
-| `npm test`                         | API, database and shared-logic tests (needs `apps/api/.env`) |
-| `npm run test:e2e -w @reduium/web` | Browser tests (desktop and mobile)                           |
-| `npm run build`                    | Production builds of the API and website                     |
-| `npm run check`                    | Type-check, lint, test and build in one go                   |
+| Command                            | What it does                                                |
+| ---------------------------------- | ----------------------------------------------------------- |
+| `npm run dev`                      | Starts the API (port 4000) and website (port 5173) together |
+| `npm run typecheck`                | TypeScript checks for all packages                          |
+| `npm run lint`                     | Code-quality checks                                         |
+| `npm test`                         | API, database and shared-logic tests (needs `Backend/.env`) |
+| `npm run test:e2e -w @reduium/web` | Browser tests (desktop and mobile)                          |
+| `npm run build`                    | Production builds of the API and website                    |
+| `npm run check`                    | Type-check, lint, test and build in one go                  |
 
 Open http://localhost:5173 while `npm run dev` is running.
 
@@ -165,7 +166,7 @@ Every outcome has its own screen: loading, found, no shipment found, invalid num
 | 429    | `{ "error": { "code": "RATE_LIMITED", "details": { "retryAfterSeconds": n } } }` + `Retry-After` | Too many lookups                                          |
 | 500    | `{ "error": { "code": "INTERNAL_ERROR", … } }`                                                   | Unexpected failure (generic message, no internal details) |
 
-`PublicTrackingResult` is defined in [`packages/shared/src/public-tracking.ts`](packages/shared/src/public-tracking.ts). It contains the tracking number, status, method, origin and destination city and country, current location, estimated delivery date, delivery time, last update, test-data flag, and the event history (status, location, description, time).
+`PublicTrackingResult` is defined in [`Shared/src/public-tracking.ts`](Shared/src/public-tracking.ts). It contains the tracking number, status, method, origin and destination city and country, current location, estimated delivery date, delivery time, last update, test-data flag, and the event history (status, location, description, time).
 
 Sender and recipient names, companies, emails, phone numbers, street addresses, package contents, weight, notes, staff names and database IDs are **never** included. They aren't even read from the database for this endpoint.
 
@@ -201,7 +202,7 @@ It asks for your name, email and a password. The password is **visible as you ty
 | Permanently delete closed support requests     |       ✓       |          |
 | View and manage staff accounts, read audit log |       ✓       |          |
 
-The map lives in [`packages/shared/src/permissions.ts`](packages/shared/src/permissions.ts). **The API enforces it on every request.** The website uses the same map only to decide what to show.
+The map lives in [`Shared/src/permissions.ts`](Shared/src/permissions.ts). **The API enforces it on every request.** The website uses the same map only to decide what to show.
 
 ### Endpoints
 
@@ -258,7 +259,7 @@ The browser tests sign in for real with one dedicated account, `e2e-browser-test
 - Support requests sent by the browser tests use `e2e.support.<anything>@example.invalid`. They are deleted (and audit-logged by reference only) when the account is switched on and off. Nothing else is touched.
 - `E2E_NO_DB=1` runs the browser tests without the test account, so nothing is written to the database: the real sign-in tests are skipped (public tracking tests still read the sample shipments).
 
-See [`apps/api/scripts/e2e-account.ts`](apps/api/scripts/e2e-account.ts).
+See [`Backend/scripts/e2e-account.ts`](Backend/scripts/e2e-account.ts).
 
 ## Shipment management (admin)
 
@@ -399,7 +400,7 @@ Regional variants map sensibly (es-MX → Spanish, pt-PT → Portuguese (Brazil)
 
 ### Translation status (internal)
 
-Each language in [`packages/shared/src/locales.ts`](packages/shared/src/locales.ts) has a status:
+Each language in [`Shared/src/locales.ts`](Shared/src/locales.ts) has a status:
 
 | Status     | Meaning                                          | Offered to visitors?  | Chosen automatically? |
 | ---------- | ------------------------------------------------ | --------------------- | --------------------- |
@@ -422,11 +423,11 @@ A language is marked `reviewed` only after a real native-speaker review.
 | Japanese                      | `/ja/`            | draft (polite です/ます)                |
 | Chinese (Traditional), Hebrew | `/zh-TW/`, `/he/` | planned (prepared, no dictionaries yet) |
 
-**The seven draft translations were written without a native-speaker review.** Visitors only see them by choosing the language (or following a `/xx/` link); a browser set to Spanish, for example, still starts in English. Before marking a language `reviewed`, have a fluent speaker read every file in `apps/web/src/locales/<code>/` against English, ideally on the live pages. Things worth their attention: shipping terminology (e.g. "line haul", customs terms), tone, and the Arabic plural forms.
+**The seven draft translations were written without a native-speaker review.** Visitors only see them by choosing the language (or following a `/xx/` link); a browser set to Spanish, for example, still starts in English. Before marking a language `reviewed`, have a fluent speaker read every file in `Frontend/src/locales/<code>/` against English, ideally on the live pages. Things worth their attention: shipping terminology (e.g. "line haul", customs terms), tone, and the Arabic plural forms.
 
 ### What is translated, and what isn't
 
-**Translated** (dictionaries in `apps/web/src/locales/<language>/`): every piece of customer-facing interface text: navigation, homepage, tracking form, results, history and every tracking state, shipment status names and descriptions, shipping methods, journey stages, the support page and form, its validation and error messages, the "page not found" page, page titles, and screen-reader labels.
+**Translated** (dictionaries in `Frontend/src/locales/<language>/`): every piece of customer-facing interface text: navigation, homepage, tracking form, results, history and every tracking state, shipment status names and descriptions, shipping methods, journey stages, the support page and form, its validation and error messages, the "page not found" page, page titles, and screen-reader labels.
 
 - **Statuses, methods and topics are translated by their CODE.** The database values (`IN_TRANSIT`, `AIR`…) and all business logic are unchanged; the admin dashboard and API keep the English names.
 - **Event descriptions:** when staff kept the standard description for a status (the admin form fills it in), visitors see it in their language. A note staff typed themselves is shown exactly as written.
@@ -450,11 +451,11 @@ The brand font (Archivo, self-hosted) covers Latin letters only. For Arabic, Heb
 
 ### How it's built
 
-- [i18next](https://www.i18next.com) + react-i18next (MIT-licensed, free). Text lives in dictionaries, `apps/web/src/locales/<language>/<area>.json`; components never contain translated text.
+- [i18next](https://www.i18next.com) + react-i18next (MIT-licensed, free). Text lives in dictionaries, `Frontend/src/locales/<language>/<area>.json`; components never contain translated text.
 - English is built in (it's the fallback: anything not yet translated shows in English, never as a raw key). Every other language is a separate small download, fetched only when a visitor opens it. No translation service is called at runtime.
 - `npm run typecheck` fails on a misspelled or missing text key. `npm test` fails if a translation is missing a key or has an extra one, lacks a plural form its grammar needs (Arabic has six), or breaks a `{{placeholder}}` or `<tag>`; and if the English status, method or topic text ever drifts from the shared definitions the admin and API use. A browser test opens every customer page and state in the pseudo-language and fails on any interface text that is still plain English. Another test fails if a translation is left identical to English (a short list of genuinely identical words, like French "Services", is allowed). Browser tests open every launch language on desktop, tablet and mobile and check the page language and direction, sideways scrolling, translated text, localized dates and the font used.
 
-**Adding a language:** add its entry to `packages/shared/src/locales.ts`, copy `apps/web/src/locales/en/` to `apps/web/src/locales/<code>/`, translate the text, and change its status from `planned` to `draft` (then `reviewed` after a native-speaker review).
+**Adding a language:** add its entry to `Shared/src/locales.ts`, copy `Frontend/src/locales/en/` to `Frontend/src/locales/<code>/`, translate the text, and change its status from `planned` to `draft` (then `reviewed` after a native-speaker review).
 
 **Testing before translations exist (development only):** two pseudo-languages, `/en-XA/` (accented, ~35% longer text, to spot untranslated or clipped text) and `/ar-XB/` (the same, right-to-left). They never appear in the production build.
 
@@ -471,7 +472,7 @@ An audit of the whole application (code, every admin route, dependencies, secret
 
 | Issue                                                                                                                                                   | Severity | Fix                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Website pages sent no security headers: admin pages could be shown inside another site's frame (clickjacking), and there was no Content-Security-Policy | Medium   | [`apps/web/security-headers.ts`](apps/web/security-headers.ts): frame blocking, `nosniff`, referrer and permissions policies everywhere; a strict CSP (only the site's own scripts, styles, fonts and images) for the production build |
+| Website pages sent no security headers: admin pages could be shown inside another site's frame (clickjacking), and there was no Content-Security-Policy | Medium   | [`Frontend/security-headers.ts`](Frontend/security-headers.ts): frame blocking, `nosniff`, referrer and permissions policies everywhere; a strict CSP (only the site's own scripts, styles, fonts and images) for the production build |
 | The development API listened on every network interface, so other devices on the same Wi-Fi could reach it                                              | Medium   | Listens on `127.0.0.1` outside production (`HOST` setting)                                                                                                                                                                             |
 | A forgotten `NODE_ENV=production` at deployment would silently drop the Secure/`__Host-` cookie                                                         | Medium   | The API refuses to start with a non-localhost `WEB_ORIGIN` outside production, or without `https://` in production                                                                                                                     |
 | Sign-in timing could reveal which staff emails exist (a wrong password made one more database round trip than an unknown email)                         | Low      | Every failed sign-in now makes the same database calls                                                                                                                                                                                 |
@@ -489,7 +490,7 @@ An audit of the whole application (code, every admin route, dependencies, secret
 
 ## Before launch: placeholder checklist
 
-All business details live in `apps/web/src/config/company.ts`. Each one shows a visible **PLACEHOLDER** marker on the site until it's replaced:
+All business details live in `Frontend/src/config/company.ts`. Each one shows a visible **PLACEHOLDER** marker on the site until it's replaced:
 
 - [x] Support email: `info@reduiumshipment.com`
 - [x] Support phone number: +44 113 320 7332
@@ -500,7 +501,7 @@ All business details live in `apps/web/src/config/company.ts`. Each one shows a 
 
 Also confirm before launch:
 
-- [ ] The four services listed in `packages/shared/src/shipping-methods.ts` match what Reduium actually offers
+- [ ] The four services listed in `Shared/src/shipping-methods.ts` match what Reduium actually offers
 - [ ] Privacy policy and terms pages (needed before collecting support requests from the public)
 - [ ] How long support messages are kept (retention), and who deletes them
 - [ ] **Licences for the three hero photographs** (see below). Not yet verified.
@@ -510,7 +511,7 @@ Also confirm before launch:
 
 The homepage hero rotates three photographs supplied by the owner (2026-11-22):
 
-| #   | Subject                    | Original link                                                                                      | Files in `apps/web/src/assets/hero/`                                         |
+| #   | Subject                    | Original link                                                                                      | Files in `Frontend/src/assets/hero/`                                         |
 | --- | -------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | 1   | Container port at dusk     | https://www.image2url.com/r2/default/images/1795400523064-fdd625d8-7f92-4715-8885-4d29e6154766.jpg | `port-terminal-{768,1280,1920}.webp`, plus `fallback-port-terminal-1280.jpg` |
 | 2   | Warehouse aisle with staff | https://www.image2url.com/r2/default/images/1795400483114-e1007ef6-7cde-4495-9878-f9179883a6de.jpg | `warehouse-aisle-{768,1280,1920}.webp`                                       |

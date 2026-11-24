@@ -1,0 +1,43 @@
+{
+  "skipToContent": "تخطَّ إلى المحتوى",
+  "homeLinkLabel": "الصفحة الرئيسية لشركة Reduium Shipment Company",
+  "nav": {
+    "mainLabel": "التنقل الرئيسي",
+    "mobileLabel": "تنقل الجوال",
+    "track": "التتبع",
+    "services": "الخدمات",
+    "howTrackingWorks": "كيف يعمل التتبع",
+    "about": "من نحن",
+    "support": "الدعم"
+  },
+  "actions": {
+    "trackPackage": "تتبّع شحنة",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "goHome": "الانتقال إلى الصفحة الرئيسية"
+  },
+  "language": {
+    "label": "اللغة"
+  },
+  "footer": {
+    "tagline": "كل شحنة، مسجّلة بدقة.",
+    "navigate": "التنقل",
+    "services": "الخدمات",
+    "contact": "التواصل",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "headOffice": "المقر الرئيسي",
+    "customerSupport": "دعم العملاء",
+    "copyright": "© {{year}} {{company}}"
+  },
+  "notFound": {
+    "documentTitle": "الصفحة غير موجودة | Reduium",
+    "eyebrow": "خطأ 404 · العنوان غير موجود",
+    "heading": "هذه الصفحة ليست على مسارنا.",
+    "body": "ربما كُتب العنوان بشكل خاطئ، أو نُقلت الصفحة. يمكنك تتبّع شحنة أو العودة إلى الصفحة الرئيسية."
+  },
+  "placeholder": {
+    "label": "محتوى مؤقت",
+    "hint": "محتوى مؤقت: يُستبدل في Frontend/src/config/company.ts"
+  }
+}

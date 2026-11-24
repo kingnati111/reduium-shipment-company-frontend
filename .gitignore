@@ -19,7 +19,7 @@ dist/
 build/
 *.tsbuildinfo
 # Prisma client, generated from prisma/schema.prisma by `npm run db:generate`
-apps/api/src/generated/
+Backend/src/generated/
 
 # ── Test output ─────────────────────────────────────────────
 coverage/

@@ -4,8 +4,9 @@
   "description": "Reduium Shipment Company: logistics, package tracking and shipment management platform.",
   "type": "module",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "Frontend",
+    "Backend",
+    "Shared"
   ],
   "engines": {
     "node": ">=24.11.0"

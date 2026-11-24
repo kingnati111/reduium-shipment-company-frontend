@@ -29,7 +29,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['apps/web/**/*.{ts,tsx}'],
+    files: ['Frontend/**/*.{ts,tsx}'],
     languageOptions: { globals: globals.browser },
     plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
     rules: {
@@ -38,7 +38,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['apps/api/**/*.ts', 'packages/**/*.ts', '*.js'],
+    files: ['Backend/**/*.ts', 'Shared/**/*.ts', '*.js'],
     languageOptions: { globals: globals.node },
   },
 );
