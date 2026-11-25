@@ -55,6 +55,7 @@ npm install
 | `npm run build`            | Production build of the website (`Frontend/dist`)                                                              |
 | `npm run check`            | Type-check, lint, test and build in one go                                                                     |
 | `npm run shared:hash`      | Fingerprint of `Shared/` (must match the Backend repository)                                                   |
+| `npm run check:live`       | Checks that the live website sends the security headers from `Frontend/security-headers.ts` (read-only)        |
 
 Open http://localhost:5173 while `npm run dev` is running.
 

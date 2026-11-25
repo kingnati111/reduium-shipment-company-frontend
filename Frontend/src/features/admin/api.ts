@@ -4,8 +4,11 @@ const API_BASE: string = import.meta.env.VITE_API_BASE_URL ?? '';
 
 /**
  * The session cookie is httpOnly: this code never sees it. The browser
- * attaches it automatically ("same-origin" credentials). What this code does
- * handle is the CSRF token, which must accompany every state-changing request.
+ * attaches it automatically: "same-origin" credentials when the API is on the
+ * website's own address (development), "include" when VITE_API_BASE_URL points
+ * to a separate API address (production: api.reduiumshipment.com). What this
+ * code does handle is the CSRF token, which must accompany every
+ * state-changing request.
  */
 async function call(path: string, init: RequestInit & { csrfToken?: string } = {}) {
   const { csrfToken, headers, ...rest } = init;

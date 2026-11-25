@@ -22,6 +22,7 @@
     "test:e2e": "npm run test:e2e -w @reduium/web",
     "test:e2e:preview": "npm run test:e2e:preview -w @reduium/web",
     "shared:hash": "node scripts/shared-hash.mjs",
+    "check:live": "node scripts/check-live-headers.mjs",
     "check": "npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "devDependencies": {
