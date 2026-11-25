@@ -39,5 +39,8 @@
   "placeholder": {
     "label": "Platzhalter",
     "hint": "Platzhalter: in Frontend/src/config/company.ts ersetzen"
+  },
+  "company": {
+    "supportHours": "Rund um die Uhr, 7 Tage die Woche"
   }
 }

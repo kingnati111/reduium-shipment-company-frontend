@@ -39,5 +39,8 @@
   "placeholder": {
     "label": "محتوى مؤقت",
     "hint": "محتوى مؤقت: يُستبدل في Frontend/src/config/company.ts"
+  },
+  "company": {
+    "supportHours": "على مدار الساعة، طوال أيام الأسبوع"
   }
 }

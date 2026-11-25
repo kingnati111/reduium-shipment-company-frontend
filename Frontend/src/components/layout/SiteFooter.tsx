@@ -62,8 +62,9 @@ export function SiteFooter() {
         <Container className="flex flex-col gap-3 py-6 text-sm text-paper/55 md:flex-row md:items-center md:justify-between">
           <p>{t('footer.copyright', { year, company: company.name })}</p>
           <p className="flex flex-wrap gap-x-4 gap-y-1">
-            <CompanyValue field={company.legal.registeredName} />
-            <CompanyValue field={company.legal.registrationNumber} />
+            {Object.values(company.legal).map(
+              (field, i) => field && <CompanyValue key={i} field={field} />,
+            )}
           </p>
         </Container>
       </div>

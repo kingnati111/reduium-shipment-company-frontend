@@ -63,7 +63,7 @@ test.describe('Stage 2: homepage', () => {
     await expect(page.getByRole('heading', { level: 2, name: 'Customs Clearance' })).toBeVisible();
   });
 
-  test('real contact details are shown; remaining placeholders are visibly marked', async ({
+  test('real contact details and 24/7 support hours are shown, with no placeholders', async ({
     page,
   }) => {
     await page.goto('/#support');
@@ -72,11 +72,12 @@ test.describe('Stage 2: homepage', () => {
       'info@reduiumshipment.com',
       '+44 113 320 7332',
       '115 Crown Street, London, United Kingdom',
+      '24 hours a day, 7 days a week',
     ]) {
       await expect(support.getByText(value, { exact: true })).toBeVisible();
     }
-    // Only the support hours are still a placeholder in this section.
-    await expect(support.getByText('Placeholder', { exact: true })).toHaveCount(1);
+    // Every contact detail in this section is real now: no placeholder markers.
+    await expect(support.getByText('Placeholder', { exact: true })).toHaveCount(0);
     // The footer shows the same real details on every page.
     const footer = page.locator('footer');
     await expect(footer.getByText('info@reduiumshipment.com', { exact: true })).toBeVisible();

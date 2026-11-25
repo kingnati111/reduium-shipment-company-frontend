@@ -9,6 +9,10 @@ import type { CompanyField } from '../../config/company';
  */
 export function CompanyValue({ field }: { field: CompanyField }) {
   const { t } = useTranslation();
+  // A phrase such as the support hours is shown in the page's language.
+  if (!field.placeholder && field.translationKey) {
+    return <span dir="auto">{t(field.translationKey)}</span>;
+  }
   // Business details (names, addresses, numbers) are never machine-translated.
   // dir="auto": phone numbers and emails stay in the right order on Arabic pages.
   if (!field.placeholder) {

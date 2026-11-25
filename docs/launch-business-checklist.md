@@ -6,8 +6,8 @@ This is a practical checklist, not legal advice. For the legal items, a UK solic
 
 ## 1. Company identity (shown in the footer)
 
-- [ ] **Required:** Registered legal entity name (exactly as registered at Companies House)
-- [ ] **Required:** Company registration number
+- [x] Registered legal entity name: Reduium Shipment Ltd (on the site; confirm it matches Companies House exactly)
+- [ ] **Required:** Company registration number (hidden on the site until provided)
 - [ ] Registered office address, if different from the head office (115 Crown Street, London)
 - [ ] Postcode for the head office address (recommended)
 - [ ] VAT number, if VAT-registered
@@ -17,8 +17,8 @@ This is a practical checklist, not legal advice. For the legal items, a UK solic
 - [x] Support email: info@reduiumshipment.com (on the site)
 - [ ] **Required:** The info@reduiumshipment.com mailbox actually exists and someone reads it
 - [x] Support phone: +44 113 320 7332 (on the site)
-- [ ] **Required:** The phone line is answered during the published hours (or has voicemail)
-- [ ] **Required:** Support hours, with time zone (e.g. "Mon–Fri 09:00–17:30 UK time")
+- [ ] **Required:** The phone line is answered 24 hours a day, 7 days a week, as the site now states (or has voicemail outside staffed hours)
+- [x] Support hours: 24 hours a day, 7 days a week (on the site)
 - [ ] Who answers support requests in the admin dashboard, and how quickly you aim to reply
 
 ## 3. Legal pages and data protection (UK)

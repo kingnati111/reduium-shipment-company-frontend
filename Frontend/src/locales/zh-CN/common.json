@@ -39,5 +39,8 @@
   "placeholder": {
     "label": "占位内容",
     "hint": "占位内容：请在 Frontend/src/config/company.ts 中替换"
+  },
+  "company": {
+    "supportHours": "全天24小时，每周7天"
   }
 }

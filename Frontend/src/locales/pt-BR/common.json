@@ -39,5 +39,8 @@
   "placeholder": {
     "label": "Provisório",
     "hint": "Provisório: substituir em Frontend/src/config/company.ts"
+  },
+  "company": {
+    "supportHours": "24 horas por dia, 7 dias por semana"
   }
 }

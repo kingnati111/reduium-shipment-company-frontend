@@ -248,9 +248,9 @@ All business details live in `Frontend/src/config/company.ts`. Each one shows a 
 - [x] Support email: `info@reduiumshipment.com`
 - [x] Support phone number: +44 113 320 7332
 - [x] Headquarters address: 115 Crown Street, London, United Kingdom
-- [ ] Support hours
-- [ ] Registered legal entity name
-- [ ] Company registration number
+- [x] Support hours: 24 hours a day, 7 days a week (shown in each visitor's language)
+- [x] Registered legal entity name: Reduium Shipment Ltd
+- [ ] Company registration number (not shown on the site until it's added in `company.ts`)
 
 Also confirm before launch:
 

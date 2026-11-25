@@ -39,5 +39,8 @@
   "placeholder": {
     "label": "仮の内容",
     "hint": "仮の内容：Frontend/src/config/company.ts で置き換えてください"
+  },
+  "company": {
+    "supportHours": "24時間365日対応"
   }
 }
